@@ -37,6 +37,7 @@ namespace IntexProject2
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IBurialRepository, EFBurialRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -66,9 +67,18 @@ namespace IntexProject2
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                   name: "default",
+                   pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "{pageNum}",
+                    defaults: new { Controller = "Home", action = "Burials", pageNum = 1 });
+
+               
+
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

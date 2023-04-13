@@ -1,4 +1,5 @@
 ﻿using IntexProject2.Models;
+using IntexProject2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,10 +16,11 @@ namespace IntexProject2.Controllers
     {
 
         private BurialDataContext _burials;
+        private IBurialRepository repo;
 
-        public HomeController(BurialDataContext context)
+        public HomeController(IBurialRepository context)
         {
-            _burials = context;
+            repo = context;
         }
 
         public IActionResult Index()
@@ -36,10 +38,27 @@ namespace IntexProject2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult Burials()
+        public IActionResult Burials(int pageNum = 1)
         {
-            ViewBag.Burials = _burials.Burialmain.ToList();
-            return View();
+           
+            int pageSize = 30;
+
+            var burial = new BurialViewModel
+            {
+                Burials = repo.Burials
+                .OrderBy(b => b.Area)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumBooks =
+                        (repo.Burials.Count()),
+                    BurialsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+            return View(burial);
         }
     }
 }
