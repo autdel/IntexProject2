@@ -37,9 +37,26 @@ namespace IntexProject2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public ActionResult Burials()
+        public ActionResult Burials(int pageNum =1)
         {
-            return View();
+            int pageSize = 50;
+
+            var burial = new BurialViewModel
+            {
+                Burials = _burialsRepo.Burials
+                .OrderBy(b => b.Area)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumBooks =
+                        (_burialsRepo.Burials.Count()),
+                    BurialsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+            return View(burial);
         }
 
         public IActionResult RepoTesting()

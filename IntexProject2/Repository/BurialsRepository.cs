@@ -28,6 +28,7 @@ namespace IntexProject2.Repository
             return context.Burialmain.ToList();
         }
 
+        public IQueryable<Burialmain> Burials => context.Burialmain;
         public List<Textile> GetAllTextiles()
         {
             return context.Textile.ToList();

@@ -12,6 +12,7 @@ namespace IntexProject2.Repository
         #region
         public List<Bodyanalysis> GetAllBodyanalysis();
         public List<Burialmain> GetAllBurialmain();
+        public IQueryable<Burialmain> Burials { get; }
         public List<Textile> GetAllTextiles();
         public Analysis GetAnalysisByTextileID(long textileID);
         public Bodyanalysis GetBodyAnalysisByBodyAnalysisID(int baKeyID);
@@ -22,7 +23,7 @@ namespace IntexProject2.Repository
         public List<Structure> GetStructuresByTextileID(long textileID);
         public List<Textilefunction> GetTextileFunctionByTextileID(long textileID);
         public List<Yarnmanipulation> GetYarnManipulationByTextileID(long textileID);
-
+        
 
 
 
