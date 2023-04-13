@@ -1,5 +1,6 @@
 ﻿using IntexProject2.Models;
 using IntexProject2.Repository;
+using IntexProject2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

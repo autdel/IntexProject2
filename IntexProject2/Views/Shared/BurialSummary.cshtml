@@ -1,0 +1,69 @@
+﻿@{
+}
+@model Burialmain
+<div class="card card-outline-primary m-1 p-1">
+    <div>
+        <h5>
+            @Model.Squarenorthsouth @Model.Northsouth @Model.Squareeastwest @Model.Eastwest @Model.Area #@Model.Burialnumber
+        </h5>
+        <hr />
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Age At Death</th>
+                <th>Burial Depth</th>
+                <th>Estimate Stature</th>
+                <th>Hair Color</th>
+                <th>Head Direction</th>
+                <th>Textile Color</th>
+                <th>textile Function</th>
+                <th>Textil Structure</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @if (Model.Ageatdeath != "")
+                    {
+                        @if (Model.Ageatdeath == "A")
+                        {
+                            <text>Adult</text>
+                        }
+                        @if (Model.Ageatdeath == "C")
+                        {
+                            <text>Child</text>
+                        }
+                        @if (Model.Ageatdeath == "I")
+                        {
+                            <text>Infant</text>
+                        }
+                        @if (Model.Ageatdeath == "N")
+                        {
+                            <text>Newborn</text>
+                        }
+                        else {
+                            <text>No Information</text>
+                        }              
+
+                    }
+                </td>
+                <td>
+                    @if (Model.Depth != "")
+                    {
+                        <text>@Model.Depth</text>
+                            }
+                    else
+                    {
+                        <text>No Information</text>
+                    }
+                </td>
+
+            </tr>
+        </tbody>
+        
+
+    </table>
+
+    </div>

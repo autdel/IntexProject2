@@ -3,3 +3,18 @@
 *@
 @{
 }
+<<<<<<< HEAD
+=======
+@model BurialViewModel
+<div>
+    @foreach (Burialmain b in Model.Burials)
+    {
+        <partial name="BurialSummary" model="b" />
+    }
+</div>
+
+<div page-model="@Model.PageInfo" page-action="Burials" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-dark" class="btn-group pull-right m-1">
+</div>
+>>>>>>> 80df745 (Created the summary page for the burial information)
