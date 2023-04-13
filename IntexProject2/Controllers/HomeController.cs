@@ -38,10 +38,16 @@ namespace IntexProject2.Controllers
         }
         public ActionResult Burials()
         {
+            return View();
+        }
+
+        public IActionResult RepoTesting()
+        {
             ViewBag.Burials = _burialsRepo.GetAllBurialmain(); // List
             ViewBag.Bodyanalysis = _burialsRepo.GetAllBodyanalysis(); // List
             ViewBag.SelectedBA = _burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 1 item
             ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(33495522228568350);
+            ViewBag.Color = _burialsRepo.GetColorByTextileID(33495522228568069);
             return View();
         }
     }

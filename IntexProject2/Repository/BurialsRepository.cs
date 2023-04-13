@@ -74,6 +74,19 @@ namespace IntexProject2.Repository
             return ban;
         }
 
+        public Color GetColorByTextileID(long textileID)
+        {
+            Color color = ((Color)(from t in context.Textile join ct in context.ColorTextile
+                                on textileID equals ct.MainTextileid join c in context.Color
+                                on ct.MainColorid equals c.Id select new Color
+                                {
+                                    Id = c.Id,
+                                    Value = c.Value,
+                                    Colorid = c.Colorid
+                                }).FirstOrDefault());
+            return color;
+        }
+
 
         #endregion
         // ----------------------------------------- CREATE METHODS -------------------------------------------//
