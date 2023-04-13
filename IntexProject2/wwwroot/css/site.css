@@ -59,13 +59,45 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    color: white;
+    background-color: #002e5d;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+/*Kate's css add ons*/
+.color-nav {
+background-color: rgb(0, 46, 93);
+font-family: "Public Sans", Helvetica, Arial, sans-serif;
+font-size: medium;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.formoutput {
+    padding: 10px;
+    background-color: #002e5d;
+    opacity:0.4;
+    color:white;
+    border-radius: 10px;
 }
