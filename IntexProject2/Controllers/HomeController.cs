@@ -39,7 +39,7 @@ namespace IntexProject2.Controllers
         }
         public ActionResult Burials(int pageNum =1)
         {
-            int pageSize = 50;
+            int pageSize = 51;
 
             var burial = new BurialViewModel
             {
