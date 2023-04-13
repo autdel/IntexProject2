@@ -74,18 +74,110 @@ namespace IntexProject2.Repository
             return ban;
         }
 
-        public Color GetColorByTextileID(long textileID)
+        public List<Color> GetColorsByTextileID(long textileID)
         {
-            Color color = ((Color)(from t in context.Textile join ct in context.ColorTextile
-                                on textileID equals ct.MainTextileid join c in context.Color
-                                on ct.MainColorid equals c.Id select new Color
-                                {
-                                    Id = c.Id,
-                                    Value = c.Value,
-                                    Colorid = c.Colorid
-                                }).FirstOrDefault());
-            return color;
+            List<Color> colors = ((List<Color>)(from t in context.Textile join ct in context.ColorTextile
+                        on textileID equals ct.MainTextileid join c in context.Color
+                        on ct.MainColorid equals c.Id select new Color
+                        {
+                            Id = c.Id,
+                            Value = c.Value,
+                            Colorid = c.Colorid
+                        }).Distinct().ToList());
+            return colors;
         }
+
+        public Decoration GetDecorationByTextileID(long textileID)
+        {
+            Decoration decoration = ((Decoration)(from t in context.Textile join dt in context.DecorationTextile
+                                on textileID equals dt.MainTextileid join d in context.Decoration
+                                on dt.MainDecorationid equals d.Id select new Decoration
+                                {
+                                    Id = d.Id,
+                                    Value = d.Value,
+                                    Decorationid = d.Decorationid
+                                }).FirstOrDefault());
+            return decoration;
+        }
+
+        public List<Dimension> GetDimensionsByTextileID(long textileID)
+        {
+            List<Dimension> dimension = ((List<Dimension>)(from t in context.Textile join dt in context.DimensionTextile
+                                on textileID equals dt.MainTextileid join d in context.Dimension
+                                on dt.MainDimensionid equals d.Id select new Dimension
+                                {
+                                    Id = d.Id,
+                                    Value = d.Value,
+                                    Dimensiontype = d.Dimensiontype,
+                                    Dimensionid = d.Dimensionid
+                                }).Distinct().ToList());
+            return dimension;
+        }
+
+        public List<Photodata> GetPhotoDataByTextileID(long textileID)
+        {
+            List<Photodata> pd = ((List<Photodata>)(from t in context.Textile join pdt in context.PhotodataTextile
+                                on textileID equals pdt.MainTextileid join p in context.Photodata
+                                on pdt.MainPhotodataid equals p.Id select new Photodata
+                                {
+                                    Id = p.Id,
+                                    Description = p.Description,
+                                    Filename = p.Filename,
+                                    Photodataid = p.Photodataid,
+                                    Date = p.Date,
+                                    Url = p.Url
+                                }).Distinct().ToList());
+            return pd;
+        }
+
+        public List<Structure> GetStructuresByTextileID(long textileID)
+        {
+            List<Structure> structures = ((List<Structure>)(from t in context.Textile join st in context.StructureTextile
+                                on textileID equals st.MainTextileid join s in context.Structure
+                                on st.MainStructureid equals s.Id select new Structure
+                                {
+                                    Id = s.Id,
+                                    Value = s.Value,
+                                    Structureid = s.Structureid
+                                }).Distinct().ToList());
+            return structures;
+        }
+
+        public List<Textilefunction> GetTextileFunctionByTextileID(long textileID)
+        {
+            List<Textilefunction> function = ((List<Textilefunction>)(from t in context.Textile join tft in context.TextilefunctionTextile
+                                on textileID equals tft.MainTextileid join tf in context.Textilefunction
+                                on tft.MainTextilefunctionid equals tf.Id select new Textilefunction
+                                {
+                                    Id = tf.Id,
+                                    Value = tf.Value,
+                                    Textilefunctionid = tf.Textilefunctionid
+                                }).Distinct().ToList());
+            return function;
+        }
+
+        public List<Yarnmanipulation> GetYarnManipulationByTextileID(long textileID)
+        {
+            List<Yarnmanipulation> yarn = ((List<Yarnmanipulation>)(from t in context.Textile join ymt in context.YarnmanipulationTextile
+                                on textileID equals ymt.MainTextileid join ym in context.Yarnmanipulation
+                                on ymt.MainYarnmanipulationid equals ym.Id select new Yarnmanipulation
+                                {
+                                    Id = ym.Id,
+                                    Thickness = ym.Thickness,
+                                    Angle = ym.Angle,
+                                    Manipulation = ym.Manipulation,
+                                    Material = ym.Material,
+                                    Count = ym.Count,
+                                    Component = ym.Component,
+                                    Ply = ym.Ply,
+                                    Yarnmanipulationid = ym.Yarnmanipulationid,
+                                    Direction = ym.Direction
+                                }).Distinct().ToList());
+            return yarn;
+        }
+
+
+
 
 
         #endregion

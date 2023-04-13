@@ -15,7 +15,15 @@ namespace IntexProject2.Repository
         public List<Textile> GetAllTextiles();
         public Analysis GetAnalysisByTextileID(long textileID);
         public Bodyanalysis GetBodyAnalysisByBodyAnalysisID(int baKeyID);
-        public Color GetColorByTextileID(long textileID);
+        public List<Color> GetColorsByTextileID(long textileID);
+        public Decoration GetDecorationByTextileID(long textileID);
+        public List<Dimension> GetDimensionsByTextileID(long textileID);
+        public List<Photodata> GetPhotoDataByTextileID(long textileID);
+        public List<Structure> GetStructuresByTextileID(long textileID);
+        public List<Textilefunction> GetTextileFunctionByTextileID(long textileID);
+        public List<Yarnmanipulation> GetYarnManipulationByTextileID(long textileID);
+
+
 
 
         #endregion

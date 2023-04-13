@@ -5,12 +5,15 @@
 }
 
 <div>
-    @if (ViewBag.Analysis != null)
+    @if (ViewBag.Yarnmanipulation != null)
     {
-        <div>
-            <span>@ViewBag.Analysis.Id</span>
-            <span>@ViewBag.Analysis.Date</span>
-        </div>
+        foreach (Yarnmanipulation y in ViewBag.Yarnmanipulation)
+        {
+            <div>
+                <span>@y.Id</span>
+                <span>@y.Direction</span>
+            </div>
+        }
     }
     else
     {
