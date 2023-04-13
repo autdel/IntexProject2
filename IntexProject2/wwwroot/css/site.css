@@ -101,3 +101,17 @@ font-size: medium;
     color:white;
     border-radius: 10px;
 }
+
+.line{
+    text-align:center;
+    border-bottom:solid;
+    border-bottom-color: black;
+}
+.container1{
+    float:left;
+    width:48%
+}
+.container2{
+    float:right;
+    width:48%;
+}
