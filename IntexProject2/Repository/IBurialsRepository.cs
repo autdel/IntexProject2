@@ -8,7 +8,27 @@ namespace IntexProject2.Repository
 {
     public interface IBurialsRepository
     {
-        public List<Burialmain> GetAllBurialmain();
+        // ----------------------------------------- GET METHODS -------------------------------------------//
+        #region
         public List<Bodyanalysis> GetAllBodyanalysis();
+        public List<Burialmain> GetAllBurialmain();
+        public List<Textile> GetAllTextiles();
+        public Analysis GetAnalysisByTextileID(long textileID);
+        public Bodyanalysis GetBodyAnalysisByBodyAnalysisID(int baKeyID);
+
+
+        #endregion
+        // ----------------------------------------- CREATE METHODS -------------------------------------------//
+        #region
+
+        #endregion
+        // ----------------------------------------- UPDATE METHODS -------------------------------------------//
+        #region
+
+        #endregion
+        // ----------------------------------------- REMOVE METHODS -------------------------------------------//
+        #region
+
+        #endregion
     }
 }

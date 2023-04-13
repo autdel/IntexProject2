@@ -4,12 +4,17 @@
 @{
 }
 <div>
-    @foreach (var i in ViewBag.Bodyanalysis)
+    @if (ViewBag.Analysis != null)
     {
         <div>
-            <span>@i.BodyAnalysisId</span>
-            <span>@i.DateOfExamination</span>
+            <span>@ViewBag.Analysis.Id</span>
+            <span>@ViewBag.Analysis.Date</span>
         </div>
     }
-
+    else
+    {
+        <div>
+            <span>No data to display</span>
+        </div>
+    }
 </div>
