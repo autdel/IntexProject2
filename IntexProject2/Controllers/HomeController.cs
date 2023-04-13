@@ -31,6 +31,10 @@ namespace IntexProject2.Controllers
         {
             return View();
         }
+        public IActionResult MummyPredict()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -72,6 +76,27 @@ namespace IntexProject2.Controllers
             ViewBag.Structures = _burialsRepo.GetStructuresByTextileID(33495522228568403); // List if multiple
             ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(33495522228568370); // List if multiple
             ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(33495522228568816); // List if multiple
+            return View();
+        }
+
+        public ActionResult CreateEntry(int formID = 0)
+        {
+            ViewData["Form"] = formID;
+
+            
+            return View();
+        }
+
+        public ActionResult SelectEntry(int formID)
+        {
+            return RedirectToAction("CreateEntry", "Home", new { formID = formID });
+        }
+
+        public ActionResult EditEntry(int formID = 0)
+        {
+            ViewData["Form"] = formID;
+
+
             return View();
         }
     }
