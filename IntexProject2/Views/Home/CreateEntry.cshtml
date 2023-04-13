@@ -2,182 +2,400 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Create New Burial Entry";
+    ViewBag.Title = "New Entry";
 }
+
+@model IntexProject2.Models.EntryViewModel
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
+<h1 style="text-align:center">@ViewData["Title"]</h1>
+<br />
 
+<div style="text-align:center; align-items:center">
+    <label class="form-label"> Select a form to create: </label> <br/>
+    <a  class="btn btn-dark" asp-controller="Home" asp-action="CreateEntry" asp-route-formId="1">Burial Main</a>
+    <a class="btn btn-dark" asp-controller="Home" asp-action="CreateEntry" asp-route-formId="2">Body Analysis</a>
+    <a class="btn btn-dark" asp-controller="Home" asp-action="CreateEntry" asp-route-formId="3">Textile</a>
+    <br/>
+    <br/>
+</div>
+
+@if ((int)ViewData["Form"] == 1)
+{
 <form method="post">
-    <h1 class="mb-3 line"> Burial Main  </h1>
-    <container>
-        <div class="mb-3">
-            <label class="form-label"> Burial ID #</label>
-            <input type="text" class="form-control" />
+    <h1 class="mb-3 line"> Burial Main</h1>
+    <div class="container-fluid row">
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label class="form-label"> Burial ID #</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Burial Number</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Cluster #</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Shaft #</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Area</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Head Direction</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Direction to Head</label>
+                <select style="border:none">
+                    <option value="">Select a number</option>
+                    <option value="1">West to Head</option>
+                    <option value="2">South to Head</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Direction to Feet</label>
+                <select style="border:none">
+                    <option value="">Select a number</option>
+                    <option value="1">West to Feet</option>
+                    <option value="2">South to Feet</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Square Direction</label>
+                <select style="border:none">
+                    <option value="">Select a number</option>
+                    <option value="1">Square NorthSouth</option>
+                    <option value="2">Square EastWest</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> NS Coordinates</label>
+                <select style="border:none">
+                    <option value="">Select a number</option>
+                    <option value="1">North</option>
+                    <option value="2">South</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> EW Coordinates</label>
+                <select style="border:none">
+                    <option value="">Select a number</option>
+                    <option value="1">East</option>
+                    <option value="2">West</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Depth</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Face bundles</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Preservation</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fieldbook page</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Goods</label>
+                <input type="text" class="form-control" />
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label"> Burial Number</label>
-            <input type="text" class="form-control" />
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label class="form-label">Text</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Wrapping</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">AdultsubAdult</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Sex</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Age at Death</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Hair</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Hair Color</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Length</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Samples Collected</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Data Expert Initials</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Excavation Recorder</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Photos</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Burial Materials</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Date of Excavation</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Fieldbook Excavation Year</label>
+                <input type="text" class="form-control" />
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label"> Cluster #</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Shaft #</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Area</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Square North South</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Head Direction</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">NorthSouth</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Depth</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">EastWest</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">AdultsubAdult</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Face bundles</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">South to Head</label>
-            <input type="text" class="form-control" />
-        </div>        <div class="mb-3">
-            <label class="form-label">Preservation</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Fieldbook page</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Square East West</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Goods</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Text</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Wrapping</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Sex</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Age at Death</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Hair</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Hair Color</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Length</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">West to head</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Samples Collected</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Data Expert Initials</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">West to Feet</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> South to Feet</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Excavation Recorder</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Photos</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Burial Materials</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Date of Excavation</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label"> Fieldbook Excavation Year</label>
-            <input type="text" class="form-control" />
-        </div>
-    </container>
-
-
-
-
-
-
-
-
-
-
-
-
-    <h1 class="mb-3 line"> Body Analysis  </h1>
-    <div class="mb-3">
-        <label class="form-label">Burial Area</label>
-        <input type="text" class="form-control" />
+        <br />
     </div>
-
-
-    <h1 class="mb-3 line"> Textile  </h1>
-    <div class="mb-3">
-        <label class="form-label">Burial Area</label>
-        <input type="text" class="form-control" />
-    </div>
-
-
-
-
-
-    <button type="submit" class="btn">Submit</button>
-
-
-
-
+    <input type="submit" value="Submit" class="btn-dark btn" />
 </form>
+}
+else if ((int)ViewData["Form"] == 2)
+{
+<form>
+    <h1 class="mb-3 line"> Body Analysis  </h1>
+    <div class="container-fluid row">
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label class="form-label"> Body Analysis Id</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Date of Examination</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Preservation Index</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Observations</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Robust</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Supra Orbital Ridges</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Orbit Edge</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Parietal Bossing</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Gonion</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nuchal Crest</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Zygomatic Crest</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Sphenooccipital Synchrondrosis</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Lamboid Suture</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Squamos Suture</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tooth Attrition</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tooth Eruption</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Tooth Eruption Age Estimate</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ventral Arc</label>
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+            <div class="mb-3">
+                <label class="form-label">Subpubic Angle</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Sciatic Notch</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Pubic Bone</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Preauricular Sulcus</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Medial_IP_Ramus</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Dorsal Pitting</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Femur</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Humerus</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Femur Head Diameter</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Humerus Head Diameter</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Femur Head Diameter</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Femur Length</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Humerus Length</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Tibia</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Estimate Stature</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Osteophytosis</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label"> Caries_Periodontal_Disease</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Notes</label>
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <br />
+    </div>
+    <input type="submit" value="Submit" class="btn-dark btn" />
+</form>
+
+}
+else if ((int)ViewData["Form"] == 3)
+{
+    <form>
+        <h1 class="mb-3 line"> Textile  </h1>
+        <div class="container-fluid row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label class="form-label">Id #</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Burial Number</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Textile Id #</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Locale</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Estimated Period</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sample Date</label>
+                    <input type="date" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Photographed Date</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Direction</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn-dark btn" />
+    </form>
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -34,10 +34,6 @@ namespace IntexProject2.Controllers
         {
             return View();
         }
-        public IActionResult CreateEntry()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -47,6 +43,27 @@ namespace IntexProject2.Controllers
         public IActionResult Burials()
         {
             ViewBag.Burials = _burials.Burialmain.ToList();
+            return View();
+        }
+
+        public ActionResult CreateEntry(int formID = 0)
+        {
+            ViewData["Form"] = formID;
+
+            
+            return View();
+        }
+
+        public ActionResult SelectEntry(int formID)
+        {
+            return RedirectToAction("CreateEntry", "Home", new { formID = formID });
+        }
+
+        public ActionResult EditEntry(int formID = 0)
+        {
+            ViewData["Form"] = formID;
+
+
             return View();
         }
     }
