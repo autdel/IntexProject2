@@ -45,9 +45,15 @@ namespace IntexProject2.Controllers
         {
             ViewBag.Burials = _burialsRepo.GetAllBurialmain(); // List
             ViewBag.Bodyanalysis = _burialsRepo.GetAllBodyanalysis(); // List
-            ViewBag.SelectedBA = _burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 1 item
-            ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(33495522228568350);
-            ViewBag.Color = _burialsRepo.GetColorByTextileID(33495522228568069);
+            ViewBag.SelectedBA = _burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 0 or 1 item
+            ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(33495522228568350); // 0 or 1 item
+            ViewBag.Colors = _burialsRepo.GetColorsByTextileID(33495522228568069); // List if multiple
+            ViewBag.Decoration = _burialsRepo.GetDecorationByTextileID(33495522228568069); // 0 or 1 item
+            ViewBag.Dimensions = _burialsRepo.GetDimensionsByTextileID(33495522228568357); // List if multiple
+            ViewBag.Photodata = _burialsRepo.GetPhotoDataByTextileID(33495522228569209); // List if multiple
+            ViewBag.Structures = _burialsRepo.GetStructuresByTextileID(33495522228568403); // List if multiple
+            ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(33495522228568370); // List if multiple
+            ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(33495522228568816); // List if multiple
             return View();
         }
     }
