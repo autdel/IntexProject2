@@ -4,8 +4,12 @@
 @{
 }
 <div>
-    @foreach (var i in ViewBag.Burials)
+    @foreach (var i in ViewBag.Bodyanalysis)
     {
-        <div>@i</div>
+        <div>
+            <span>@i.BodyAnalysisId</span>
+            <span>@i.DateOfExamination</span>
+        </div>
     }
+
 </div>

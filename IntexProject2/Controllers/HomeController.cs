@@ -1,4 +1,5 @@
 ﻿using IntexProject2.Models;
+using IntexProject2.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,12 +14,11 @@ namespace IntexProject2.Controllers
 {
     public class HomeController : Controller
     {
+        private IBurialsRepository _burialsRepo;
 
-        private BurialDataContext _burials;
-
-        public HomeController(BurialDataContext context)
+        public HomeController(IBurialsRepository context)
         {
-            _burials = context;
+            _burialsRepo = context;
         }
 
         public IActionResult Index()
@@ -36,9 +36,10 @@ namespace IntexProject2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult Burials()
+        public ActionResult Burials()
         {
-            ViewBag.Burials = _burials.Burialmain.ToList();
+            ViewBag.Burials = _burialsRepo.GetAllBurialmain();
+            ViewBag.Bodyanalysis = _burialsRepo.GetAllBodyanalysis();
             return View();
         }
     }
