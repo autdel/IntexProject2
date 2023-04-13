@@ -1,5 +1,6 @@
 using IntexProject2.Data;
 using IntexProject2.Models;
+using IntexProject2.Repository;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -64,6 +65,8 @@ namespace IntexProject2
                 options.Password.RequiredLength = 15;
                 options.Password.RequiredUniqueChars = 1;
             });
+
+            services.AddScoped<IBurialsRepository, BurialsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
