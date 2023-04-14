@@ -24,6 +24,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.14.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.14.1" />
     <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.1" />
@@ -35,6 +37,10 @@
     <None Remove="Infrastructure\" />
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Filters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="YESTHEmodel.onnx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\ViewModels\" />

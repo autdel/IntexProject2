@@ -180,5 +180,10 @@ namespace IntexProject2.Controllers
 
             return View();
         }
+
+        public ActionResult Supervised()
+        {
+            return View();
+        }
     }
 }

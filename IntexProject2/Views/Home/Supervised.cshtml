@@ -1,4 +1,336 @@
 ﻿@page
 @{
 }
+
+
+
 <h1>Supervised models page</h1>
+
+<div class="container">
+    <form onsubmit="Onnx(event)" id="inputData2">
+        <label for="Id">Id:</label>
+        <input type="number" id="Id" name="Id" /><br /><br />
+
+        <br>
+        <br>
+        <br>
+
+        <label for="SquareNorthSouth">SquareNorthSouth:</label>
+        <input type="number" id="SquareNorthSouth" name="SquareNorthSouth" />
+
+        <br>
+        <br>
+        <br>
+
+        <label for="Depth">Depth:</label>
+        <input type="number" id="Depth" name="Depth" />
+
+        <br />
+
+        <label for="SouthToHead">SouthToHead:</label>
+        <input type="number" id="SouthToHead" name="SouthToHead" />
+
+        <br />
+
+        <label for="SquareEastWest">SquareEastWest:</label>
+        <input type="number" id="SquareEastWest" name="SquareEastWest" />
+
+        <br />
+
+        <label for="WestToHead">WestToHead:</label>
+        <input type="number" id="WestToHead" name="WestToHead" />
+
+        <br />
+
+        <label for="Length">Length:</label>
+        <input type="number" id="Length" name="Length" />
+
+        <br />
+
+        <label for="WestToFeet">WestToFeet:</label>
+        <input type="number" id="WestToFeet" name="WestToFeet" />
+
+        <br />
+
+        <label for="SouthToFeet">SouthToFeet:</label>
+        <input type="number" id="SouthToFeet" name="SouthToFeet" />
+
+        <br />
+
+        <label for="EastWest_E">EastWest_E:</label>
+        <input type="number" id="EastWest_E" name="EastWest_E" />
+
+        <br />
+
+        <label for="EastWest_W">EastWest_W:</label>
+        <input type="number" id="EastWest_W" name="EastWest_W" />
+
+        <br />
+
+        <label for="AdultSubAdult_A">AdultSubAdult_A:</label>
+        <input type="number" id="AdultSubAdult_A" name="AdultSubAdult_A" />
+
+        <br />
+
+        <label for="AdultSubAdult_C">AdultSubAdult_C:</label>
+        <input type="number" id="AdultSubAdult_C" name="AdultSubAdult_C" />
+
+        <br />
+
+        <label for="AdultSubAdult_NLL">AdultSubAdult_NLL:</label>
+        <input type="number" id="AdultSubAdult_NLL" name="AdultSubAdult_NLL" />
+
+        <br />
+
+        <label for="Wrapping_B">Wrapping_B:</label>
+        <input type="number" id="Wrapping_B" name="Wrapping_B" />
+
+        <br />
+
+        <label for="Wrapping_H">Wrapping_H:</label>
+        <input type="number" id="Wrapping_H" name="Wrapping_H" />
+
+        <br />
+
+        <label for="Wrapping_S">Wrapping_S:</label>
+        <input type="number" id="Wrapping_S" name="Wrapping_S" />
+
+        <br />
+
+        <label for="Wrapping_W">Wrapping_W:</label>
+        <input type="number" id="Wrapping_W" name="Wrapping_W" />
+
+        <br />
+
+        <label for="SamplesCollected_U">SamplesCollected_U:</label>
+        <input type="number" id="SamplesCollected_U" name="SamplesCollected_U" />
+
+        <br />
+
+        <label for="SamplesCollected_False">SamplesCollected_False:</label>
+        <input type="number" id="SamplesCollected_False" name="SamplesCollected_False" />
+
+        <br />
+
+        <label for="SamplesCollected_True">SamplesCollected_True:</label>
+        <input type="number" id="SamplesCollected_True" name="SamplesCollected_True" />
+
+        <br />
+
+        <label for="SamplesCollected_Unknown">SamplesCollected_Unknown:</label>
+        <input type="text" id="SamplesCollected_Unknown" name="SamplesCollected_Unknown" />
+
+        <br />
+
+        <label for="Area_NE">Area_NE:</label>
+        <input type="text" id="Area_NE" name="Area_NE" />
+
+        <br />
+
+        <label for="Area_NNW">Area_NNW:</label>
+        <input type="text" id="Area_NNW" name="Area_NNW" />
+
+        <br />
+
+        <label for="Area_NW">Area_NW:</label>
+        <input type="text" id="Area_NW" name="Area_NW" />
+
+        <br />
+
+        <label for="Area_SE">Area_SE:</label>
+        <input type="text" id="Area_SE" name="Area_SE" />
+
+        <br />
+
+        <label for="Area_SW">Area_SW:</label>
+        <input type="text" id="Area_SW" name="Area_SW" />
+
+        <br />
+
+        <label for="AgeAtDeath_A">AgeAtDeath_A:</label>
+        <input type="text" id="AgeAtDeath_A" name="AgeAtDeath_A" />
+
+        <br />
+
+        <label for="AgeAtDeath_C">AgeAtDeath_C:</label>
+        <input type="text" id="AgeAtDeath_C" name="AgeAtDeath_C" />
+
+
+        <label for="AgeAtDeath_T">AgeAtDeath_T:</label>
+        <input type="text" id="AgeAtDeath_T" name="AgeAtDeath_T" />
+        <br /><br />
+
+        <br />
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <br />
+        <div id="predictionResult">Predicted Head Direction: </div>
+
+
+        <!--<script>
+            fetch('/score', {
+                method: 'POST',
+                body: JSON.stringify(inputData2),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(prediction => {
+                    console.log(prediction);
+                    // Update the h4 tag with the prediction result
+                    document.querySelector('#predictionResult').textContent = String("Predicted head direction: " + prediction.predictedValue);
+                    console.log("it got here at least");
+                })
+                .catch(error => {
+                    alert(prediction.predictedvalue)
+                    alert("Something went wrong...");
+                });
+       </script>
+
+
+
+    <button id="submitbutton">Submit</button>-->
+        <!-- Add a button with id "submitbutton" -->
+        <!--});-->
+
+
+
+
+
+        <script>
+            function Onnx(event) {
+                event.preventDefault();
+
+                const formData = new FormData(event.target);
+
+                // get the values of the form elements
+                const squarenorthsouth = formData.get("SquareNorthSouth:");
+                const headdirection = formData.get("SouthToHead:");
+                const sex = formData.get("AdultSubAdult_NLL:");
+                const northsouth = formData.get("SouthToFeet:");
+                const eastwest = formData.get("EastWest_E:") || formData.get("EastWest_W:");
+                const adultsubadult = formData.get("AdultSubAdult_A:") || formData.get("AdultSubAdult_C:");
+                const preservation = formData.get("Wrapping_B:") || formData.get("Wrapping_H:") || formData.get("Wrapping_S:") || formData.get("Wrapping_W:");
+                const squareeastwest = formData.get("SquareEastWest:");
+                const area = formData.get("Area_NE:") || formData.get("Area_NNW:") || formData.get("Area_NW:") || formData.get("Area_SE:") || formData.get("Area_SW:");
+                const ageatdeath = formData.get("AgeAtDeath_A:") || formData.get("AgeAtDeath_C:") || formData.get("AgeAtDeath_T:");
+                const samplescollected = formData.get("SamplesCollected_U:") || formData.get("SamplesCollected_False:") || formData.get("SamplesCollected_True:") || formData.get("SamplesCollected_Unknown:");
+                const depth = formData.get("Depth:");
+                const westtohead = formData.get("WestToHead:");
+                const westtofeet = formData.get("WestToFeet:");
+                const southtofeet = formData.get("SouthToFeet:");
+                const eastwest_e = formData.get("EastWest_E:");
+                const eastwest_w = formData.get("EastWest_W:");
+                const adultsubadult_a = formData.get("AdultSubAdult_A:");
+                const adultsubadult_c = formData.get("AdultSubAdult_C:");
+                const adultsubadult_nll = formData.get("AdultSubAdult_NLL:");
+                const wrapping_b = formData.get("Wrapping_B:");
+                const wrapping_h = formData.get("Wrapping_H:");
+                const wrapping_s = formData.get("Wrapping_S:");
+                const wrapping_w = formData.get("Wrapping_W:");
+                const samplescollected_u = formData.get("SamplesCollected_U:");
+                const samplescollected_false = formData.get("SamplesCollected_False:");
+                const samplescollected_true = formData.get("SamplesCollected_True:");
+                const samplescollected_unknown = formData.get("SamplesCollected_Unknown:");
+                const area_ne = formData.get("Area_NE:");
+                const area_nnw = formData.get("Area_NNW:");
+                const area_nw = formData.get("Area_NW:");
+                const area_se = formData.get("Area_SE:");
+                const area_sw = formData.get("Area_SW:");
+                const ageatdeath_a = formData.get("AgeAtDeath_A:");
+                const ageatdeath_c = formData.get("AgeAtDeath_C:");
+                const ageatdeath_t = formData.get("AgeAtDeath_T:");
+
+
+
+                const jsonData = {
+                    "headdirection_E": 0.0,
+                    "headdirection_W": 0.0,
+                    "northsouth_N": 0.0,
+                    "sex_F": 0.0,
+                    "sex_M": 0.0,
+                    "preservation_B": 0.0,
+                    "preservation_Other": 0.0,
+                    "preservation_S": 0.0,
+                    "preservation_Skull only": 0.0,
+                    "preservation_W": 0.0,
+                    "preservation_bones and skull": 0.0,
+                    "preservation_deteriorated": 0.0,
+                    "preservation_disturbed": 0.0,
+                    "preservation_fair": 0.0,
+                    "preservation_good": 0.0,
+                    "preservation_headless skeleton": 0.0,
+                    "preservation_poor": 0.0,
+                    "preservation_poorly preserved": 0.0,
+                    "preservation_very disturbed": 0.0,
+                    "squarenorthsouth": 0.0,
+                    "depth": 0.0,
+                    "southtohead": 0.0,
+                    "squareeastwest": 0.0,
+                    "westtohead": 0.0,
+                    "length": 0.0,
+                    "westtofeet": 0.0,
+                    "southtofeet": 0.0,
+                    "eastwest_e": 0.0,
+                    "eastwest_w": 0.0,
+                    "adultsubadult_a": 0.0,
+                    "adultsubadult_c": 0.0,
+                    "adultsubadult_nll": 0.0,
+                    "wrapping_b": 0.0,
+                    "wrapping_h": 0.0,
+                    "wrapping_s": 0.0,
+                    "wrapping_w": 0.0,
+                    "samplescollected_u": 0.0,
+                    "samplescollected_false": 0.0,
+                    "samplescollected_true": 0.0,
+                    "samplescollected_unknown": 0.0,
+                    "area_ne": 0.0,
+                    "area_nnw": 0.0,
+                    "area_nw": 0.0,
+                    "area_se": 0.0,
+                    "area_sw": 0.0,
+                    "ageatdeath_a": 0.0,
+                    "ageatdeath_c": 0.0,
+                    "ageatdeath_t": 0.0
+
+                };
+
+                fetch('/score', {
+                    method: 'POST',
+                    body: JSON.stringify(jsonData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(prediction => {
+                        //console.log(prediction);
+                        // Update the h4 tag with the prediction result
+                        document.querySelector('#predictionResult').textContent = String("Predicted Head Direction: " + prediction.predictedValue);
+                        //console.log("it got here at least");
+                    })
+                    .catch(error => {
+                        alert("Something went wrong...");
+                    });
+            }
+        </script>
+
+
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
