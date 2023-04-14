@@ -124,3 +124,19 @@ font-size: medium;
 .picwidth{
     width:100%;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% 20% 30% 20%;
+    padding: 10px;
+}
+.grid-item {
+    padding: 20px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.data-title {
+    font-weight: bold;
+    padding-left: 30px;
+}
