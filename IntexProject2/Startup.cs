@@ -112,11 +112,12 @@ namespace IntexProject2
             app.UseAuthorization();
 
 
-            //app.Use(async (context, next) =>
-            //{
-            //    context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self'");
-            ///    await next();
-            //});
+            // csp header that allows things to go in that we need(especially our script that is running the supervised model)
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self'");
+                await next();
+            });
 
 
 

@@ -187,7 +187,13 @@ namespace IntexProject2.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Supervised()
+        {
+            return View();
+        }
+        [AllowAnonymous]
+        public ActionResult Unsupervised()
         {
             return View();
         }
