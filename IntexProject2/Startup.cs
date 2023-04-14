@@ -107,7 +107,8 @@ namespace IntexProject2
 
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self'");
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self';");
+                context.Response.Headers.Add("Set-Cookie", "name=value; HttpOnly; SameSite=None; Secure");
                 await next();
             });
 
