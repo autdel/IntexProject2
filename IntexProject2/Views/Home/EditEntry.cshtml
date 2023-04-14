@@ -8,10 +8,11 @@
 @model IntexProject2.Models.EntryViewModel
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
-<h1 style="text-align:center">@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/StyleSheet.css" />
+<h1 style="text-align:center;">@ViewData["Title"]</h1>
 <br />
 
-<div style="text-align:center; align-items:center">
+<div style="text-align:center;align-items:center">
     <label class="form-label"> Select a form to edit: </label> <br />
     <a class="btn btn-dark" asp-controller="Home" asp-action="EditEntry" asp-route-formId="1">Burial Main</a>
     <a class="btn btn-dark" asp-controller="Home" asp-action="EditEntry" asp-route-formId="2">Body Analysis</a>
@@ -19,6 +20,7 @@
     <br/>
     <br/>
 </div>
+
 
 @if ((int)ViewData["Form"] == 1)
 {
@@ -180,7 +182,7 @@
 }
 else if ((int)ViewData["Form"] == 2)
 {
-    <form>
+    <form method="post">
         <h1 class="mb-3 line"> Body Analysis  </h1>
         <div class="container-fluid row">
             <div class="col-sm-6">
@@ -340,7 +342,7 @@ else if ((int)ViewData["Form"] == 2)
 }
 else if ((int)ViewData["Form"] == 3)
 {
-    <form>
+    <form method="post">
         <h1 class="mb-3 line"> Textile  </h1>
         <div class="container-fluid row">
             <div class="col-sm-6">
