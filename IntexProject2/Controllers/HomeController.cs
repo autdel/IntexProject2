@@ -9,28 +9,52 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace IntexProject2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        private IBurialsRepository burialsRepo;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(IBurialsRepository context)
+
+
+        private IBurialsRepository _burialsRepo;
+
+        public HomeController(IBurialsRepository context, IHttpContextAccessor httpContextAccessor)
         {
-            burialsRepo = context;
+            _burialsRepo = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
+        public PartialViewResult GetCookieConsentPartialView()
+        {
+            bool accepted = _httpContextAccessor.HttpContext.Request.Cookies["gdpr_cookie"] == "true";
+
+            if (accepted)
+            {
+                return null;
+            }
+
+            return PartialView("_CookieConsentBanner");
+        }
+
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
         }
+
+        [AllowAnonymous]
         public IActionResult MummyPredict()
         {
             return View();
@@ -41,44 +65,78 @@ namespace IntexProject2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public ActionResult Burials(int pageNum =1)
+
+        [AllowAnonymous]
+        public ActionResult Burials(int pageNum = 1, string ageFilter = null, string hairColorFilter = null, string burialDepthFilter = null, string headDirectionFilter = null, string sexFilter = null)
         {
             int pageSize = 51;
 
-            var burial = new BurialViewModel
+
+            var burialView = new BurialViewModel
             {
-                Burials = burialsRepo.Burials
-                .OrderBy(b => b.Area)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+                Burials = _burialsRepo.Burials
+                    .Where(b => (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
+                         && (string.IsNullOrEmpty(hairColorFilter) || b.Haircolor == hairColorFilter)
+                         && (string.IsNullOrEmpty(burialDepthFilter) || b.Depth == burialDepthFilter)
+                         && (string.IsNullOrEmpty(headDirectionFilter) || b.Headdirection == headDirectionFilter)
+                         && (string.IsNullOrEmpty(sexFilter) || b.Sex == sexFilter))
+                    .OrderBy(b => b.Burialnumber)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks =
-                        (burialsRepo.Burials.Count()),
+                    TotalNumBurials =
+                        (string.IsNullOrEmpty(ageFilter) &&
+                            string.IsNullOrEmpty(hairColorFilter) &&
+                            string.IsNullOrEmpty(burialDepthFilter) &&
+                            string.IsNullOrEmpty(headDirectionFilter) &&
+                            string.IsNullOrEmpty(sexFilter)) ? _burialsRepo.Burials.Count()
+                        : _burialsRepo.Burials
+                            .Where(b => (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
+                         && (string.IsNullOrEmpty(hairColorFilter) || b.Haircolor == hairColorFilter)
+                         && (string.IsNullOrEmpty(burialDepthFilter) || b.Depth == burialDepthFilter)
+                         && (string.IsNullOrEmpty(headDirectionFilter) || b.Headdirection == headDirectionFilter)
+                         && (string.IsNullOrEmpty(sexFilter) || b.Sex == sexFilter))
+                            .Count(),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
-                }
+                },
+
+                AgeFilter = ageFilter,
+                HairColorFilter = hairColorFilter,
+                BurialDepthFilter = burialDepthFilter,
+                HeadDirectionFilter = headDirectionFilter,
+                SexFilter = sexFilter
             };
-            return View(burial);
+        
+
+            return View(burialView);
         }
 
-        public IActionResult RepoTesting()
+        [AllowAnonymous]
+        public IActionResult BurialInfo(long burialID)
         {
-            ViewBag.Burials = burialsRepo.GetAllBurialmain(); // List
-            ViewBag.Bodyanalysis = burialsRepo.GetAllBodyanalysis(); // List
-            ViewBag.SelectedBA = burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 0 or 1 item
-            ViewBag.Analysis = burialsRepo.GetAnalysisByTextileID(33495522228568350); // 0 or 1 item
-            ViewBag.Colors = burialsRepo.GetColorsByTextileID(33495522228568069); // List if multiple
-            ViewBag.Decoration = burialsRepo.GetDecorationByTextileID(33495522228568069); // 0 or 1 item
-            ViewBag.Dimensions = burialsRepo.GetDimensionsByTextileID(33495522228568357); // List if multiple
-            ViewBag.Photodata = burialsRepo.GetPhotoDataByTextileID(33495522228569209); // List if multiple
-            ViewBag.Structures = burialsRepo.GetStructuresByTextileID(33495522228568403); // List if multiple
-            ViewBag.Textilefunction = burialsRepo.GetTextileFunctionByTextileID(33495522228568370); // List if multiple
-            ViewBag.Yarnmanipulation = burialsRepo.GetYarnManipulationByTextileID(33495522228568816); // List if multiple
+            ViewBag.BurialID = burialID;
+            ViewBag.Burialmain = _burialsRepo.GetBurialmainByBurialID(burialID);
+            ViewBag.Bodyanalysis = _burialsRepo.GetBodyanalysisByBurialID(burialID);
+            ViewBag.Bodyanalysiskey = _burialsRepo.GetBodyanalysiskeyByBurialID(burialID);
+            Textile textile = _burialsRepo.GetTextileByBurialID(burialID);
+            ViewBag.Textile = textile;
+            if (textile != null)
+            {
+                ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(textile.Id);
+                ViewBag.Color = _burialsRepo.GetColorByTextileID(textile.Id);
+                ViewBag.Decoration = _burialsRepo.GetDecorationByTextileID(textile.Id); 
+                ViewBag.Dimension = _burialsRepo.GetDimensionByTextileID(textile.Id); 
+                ViewBag.Photodata = _burialsRepo.GetPhotoDataByTextileID(textile.Id);
+                ViewBag.Structures = _burialsRepo.GetStructureByTextileID(textile.Id); 
+                ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(textile.Id);
+                ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(textile.Id); 
+            }
             return View();
         }
-        [HttpGet]
+        [Authorize]
         public ActionResult CreateEntry(int formID = 0)
         {
             ViewData["Form"] = formID;
@@ -98,7 +156,8 @@ namespace IntexProject2.Controllers
         {
             return RedirectToAction("CreateEntry", "Home", new { formID = formID });
         }
-        [HttpGet]
+
+        [Authorize]
         public ActionResult EditEntry(int formID = 0)
         {
             ViewData["Form"] = formID;

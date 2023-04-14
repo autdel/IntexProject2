@@ -124,3 +124,52 @@ font-size: medium;
 .picwidth{
     width:100%;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% 20% 30% 20%;
+    padding: 10px;
+}
+.grid-item {
+    padding: 20px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.data-title {
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+/* Cookie styles
+-------------------------------------------------- */
+.cookie-consent {
+    position: fixed;
+    bottom: 8px;
+    left: 20px;
+    width: 30%;
+    padding-top: 7px;
+    height: 13%;
+    color: #fff;
+    line-height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    background: #002e5d;
+    z-index: 120;
+    cursor: pointer;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.allow-button {
+    height: 25px;
+    width: 35%;
+    color: #002e5d;
+    font-size: 14px;
+    line-height: 10px;
+    border-radius: 3px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    margin: 2%;
+}

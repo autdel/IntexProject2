@@ -2,16 +2,17 @@
 }
 @model Burialmain
 
-<div class="card card-outline-primary m-1 p-1">
-    <div>
-        <h5 class="text-center bg-dark text-white">
-            #@Model.Burialnumber @Model.Squarenorthsouth @Model.Northsouth @Model.Squareeastwest @Model.Eastwest @Model.Area
-        </h5>
-    </div>
-    <table>
+<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BurialInfo" asp-route-burialID="@Model.Id">
+    <div class="card card-outline-primary m-1 p-1">
+        <div>
+            <h5>
+                @Model.Squarenorthsouth @Model.Northsouth @Model.Squareeastwest @Model.Eastwest @Model.Area #@Model.Burialnumber
+            </h5>
+        </div>
+        <table>
         
         <tr>
-            <th >Age At Death</th>
+            <th>Age At Death</th>
             <td>
                 
                 @if (Model.Ageatdeath == "A")
@@ -119,7 +120,8 @@
                 }
             </td>
 
-        </tr>
-    </table>
+            </tr>
+        </table>
 
-    </div>
+        </div>
+</a>

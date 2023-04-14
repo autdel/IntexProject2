@@ -1,0 +1,266 @@
+﻿<!-- Content on this page generated based on the selected burial in the View Burials page -->
+<div class="container" style="border: black solid 2px;">
+    <div class="text-center">
+        <h1 style="padding-top: 10px;">Burial Information</h1><hr />
+        @if (ViewBag.Burialmain != null)
+        {
+            <h2>General Burial Data</h2>
+            <div class="grid-container">
+                <span class="grid-item data-title">Head Direction:</span>
+                <span class="grid-item">@(ViewBag.Burialmain.Headdirection != null ? ViewBag.Burialmain.Headdirection : "No Data")</span>
+                <span class="grid-item data-title">Sex: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Sex != null ? ViewBag.Burialmain.Sex : "No Data")</span>
+                <span class="grid-item data-title">Depth: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Depth != null ? ViewBag.Burialmain.Depth : "No Data")</span>
+                <span class="grid-item data-title">Adult: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Adultsubadult != null ? ViewBag.Burialmain.Adultsubadult : "No Data")</span>
+                <span class="grid-item data-title">Face Bundles: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Facebundles != null ? ViewBag.Burialmain.Facebundles : "No Data")</span>
+                <span class="grid-item data-title">South to Head: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Southtohead != null ? ViewBag.Burialmain.Southtohead : "No Data")</span>
+                <span class="grid-item data-title">Preservation: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Preservation != null ? ViewBag.Burialmain.Preservation : "No Data")</span>
+                <span class="grid-item data-title">Field Book Page: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Fieldbookpage != null ? ViewBag.Burialmain.Fieldbookpage : "No Data")</span>
+                <span class="grid-item data-title">Goods: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Goods != null ? ViewBag.Burialmain.Goods : "No Data")</span>
+                <span class="grid-item data-title">Text: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Text != null ? ViewBag.Burialmain.Text : "No Data")</span>
+                <span class="grid-item data-title">Wrapping: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Wrapping != null ? ViewBag.Burialmain.Wrapping : "No Data")</span>
+                <span class="grid-item data-title">Hair Color: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Haircolor != null ? ViewBag.Burialmain.Haircolor : "No Data")</span>
+                <span class="grid-item data-title">West to Head: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Westtohead != null ? ViewBag.Burialmain.Westtohead : "No Data")</span>
+                <span class="grid-item data-title">Samples Collected: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Samplescollected != null ? ViewBag.Burialmain.Samplescollected : "No Data")</span>
+                <span class="grid-item data-title">Length: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Length != null ? ViewBag.Burialmain.Length : "No Data")</span>
+                <span class="grid-item data-title">Data Expert Initials: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Dataexpertinitials != null ? ViewBag.Burialmain.Dataexpertinitials : "No Data")</span>
+                <span class="grid-item data-title">West to Feet: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Westtofeet != null ? ViewBag.Burialmain.Westtofeet : "No Data")</span>
+                <span class="grid-item data-title">Age at Death: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Ageatdeath != null ? ViewBag.Burialmain.Ageatdeath : "No Data")</span>
+                <span class="grid-item data-title">South to Feet: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Southtofeet != null ? ViewBag.Burialmain.Southtofeet : "No Data")</span>
+                <span class="grid-item data-title">Excavation Recorder: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Excavationrecorder != null ? ViewBag.Burialmain.Excavationrecorder : "No Data")</span>
+                <span class="grid-item data-title">Photos: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Photos != null ? ViewBag.Burialmain.Photos : "No Data")</span>
+                <span class="grid-item data-title">Hair: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Hair != null ? ViewBag.Burialmain.Hair : "No Data")</span>
+                <span class="grid-item data-title">Burial Materials: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Burialmaterials != null ? ViewBag.Burialmain.Burialmaterials : "No Data")</span>
+                <span class="grid-item data-title">Date of Excavation: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Dateofexcavation != null ? ViewBag.Burialmain.Dateofexcavation : "No Data")</span>
+                <span class="grid-item data-title">Field Book Excavation Year: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Fieldbookexcavationyear != null ? ViewBag.Burialmain.Fieldbookexcavationyear : "No Data")</span>
+                <span class="grid-item data-title">Cluster Number: </span>
+                <span class="grid-item">@(ViewBag.Burialmain.Clusternumber != null ? ViewBag.Burialmain.Clusternumber : "No Data")</span>
+                <span class="grid-item data-title">Shaft Number:</span>
+                <span class="grid-item">@(ViewBag.Burialmain.Shaftnumber != null ? ViewBag.Burialmain.Shaftnumber : "No Data")</span>
+            </div>
+        }
+        else
+        {
+            <h2>No Data to Display</h2>
+        }
+        @if (ViewBag.Bodyanalysiskey != null)
+        {
+            <h2>Body Analysis and Location Key Information</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Square North South: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysiskey.SquareNorthSouth != null ? ViewBag.Bodyanalysiskey.SquareNorthSouth : "No Data")</span>
+                <span class="grid-item data-title">North South: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysiskey.NorthSouth != null ? ViewBag.Bodyanalysiskey.NorthSouth : "No Data")</span>
+                <span class="grid-item data-title">Square East West: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysiskey.SquareEastWest != null ? ViewBag.Bodyanalysiskey.SquareEastWest : "No Data")</span>
+                <span class="grid-item data-title">East West: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysiskey.EastWest != null ? ViewBag.Bodyanalysiskey.EastWest : "No Data")</span>
+                <span class="grid-item data-title">Area: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysiskey.Area != null ? ViewBag.Bodyanalysiskey.Area : "No Data")</span>
+                <span class="grid-item data-title">Burial Number: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysiskey.BurialNumber != null ? ViewBag.Bodyanalysiskey.BurialNumber : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Bodyanalysis != null)
+        {
+            <h2>Body Analysis Data</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Date of Examination: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.DateOfExamination != null ? ViewBag.Bodyanalysis.DateOfExamination : "No Data")</span>
+                <span class="grid-item data-title">Preservation Index: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.PreservationIndex != null ? ViewBag.Bodyanalysis.PreservationIndex : "No Data")</span>
+                <span class="grid-item data-title">Hair Color: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.HairColor != null ? ViewBag.Bodyanalysis.HairColor : "No Data")</span>
+                <span class="grid-item data-title">Observations: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Observations != null ? ViewBag.Bodyanalysis.Observations : "No Data")</span>
+                <span class="grid-item data-title">Robust: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Robust != null ? ViewBag.Bodyanalysis.Robust : "No Data")</span>
+                <span class="grid-item data-title">Supraorbital Ridges: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.SupraorbitalRidges != null ? ViewBag.Bodyanalysis.SupraorbitalRidges : "No Data")</span>
+                <span class="grid-item data-title">Orbit Edge: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.OrbitEdge != null ? ViewBag.Bodyanalysis.OrbitEdge : "No Data")</span>
+                <span class="grid-item data-title">Parietal Bossing: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.ParietalBossing != null ? ViewBag.Bodyanalysis.ParietalBossing : "No Data")</span>
+                <span class="grid-item data-title">Gonion: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Gonion != null ? ViewBag.Bodyanalysis.Gonion : "No Data")</span>
+                <span class="grid-item data-title">Nuchal Crest: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.NuchalCrest != null ? ViewBag.Bodyanalysis.NuchalCrest : "No Data")</span>
+                <span class="grid-item data-title">Zygomatic Crest: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.ZygomaticCrest != null ? ViewBag.Bodyanalysis.ZygomaticCrest : "No Data")</span>
+                <span class="grid-item data-title">Sphenooccipital Synchrondrosis: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.SphenooccipitalSynchrondrosis != null ? ViewBag.Bodyanalysis.SphenooccipitalSynchrondrosis : "No Data")</span>
+                <span class="grid-item data-title">Lamboid Suture: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.LamboidSuture != null ? ViewBag.Bodyanalysis.LamboidSuture : "No Data")</span>
+                <span class="grid-item data-title">Squamos Suture: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.SquamosSuture != null ? ViewBag.Bodyanalysis.SquamosSuture : "No Data")</span>
+                <span class="grid-item data-title">Tooth Attrition: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.ToothAttrition != null ? ViewBag.Bodyanalysis.ToothAttrition : "No Data")</span>
+                <span class="grid-item data-title">Tooth Eruption: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.ToothEruption != null ? ViewBag.Bodyanalysis.ToothEruption : "No Data")</span>
+                <span class="grid-item data-title">ToothEruptionAgeEstimate: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.ToothEruptionAgeEstimate != null ? ViewBag.Bodyanalysis.ToothEruptionAgeEstimate : "No Data")</span>
+                <span class="grid-item data-title">Ventral Arc: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.VentralArc != null ? ViewBag.Bodyanalysis.VentralArc : "No Data")</span>
+                <span class="grid-item data-title">Subpubic Angle: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.SubpubicAngle != null ? ViewBag.Bodyanalysis.SubpubicAngle : "No Data")</span>
+                <span class="grid-item data-title">Sciatic Notch: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.SciaticNotch != null ? ViewBag.Bodyanalysis.SciaticNotch : "No Data")</span>
+                <span class="grid-item data-title">Pubic Bone: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.PubicBone != null ? ViewBag.Bodyanalysis.PubicBone : "No Data")</span>
+                <span class="grid-item data-title">Preauricular Sulcus: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.PreauricularSulcus != null ? ViewBag.Bodyanalysis.PreauricularSulcus : "No Data")</span>
+                <span class="grid-item data-title">MedialIp Ramus: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.MedialIpRamus != null ? ViewBag.Bodyanalysis.MedialIpRamus : "No Data")</span>
+                <span class="grid-item data-title">Dorsal Pitting: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.DorsalPitting != null ? ViewBag.Bodyanalysis.DorsalPitting : "No Data")</span>
+                <span class="grid-item data-title">Femur: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Femur != null ? ViewBag.Bodyanalysis.Femur : "No Data")</span>
+                <span class="grid-item data-title">Humerus: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Humerus != null ? ViewBag.Bodyanalysis.Humerus : "No Data")</span>
+                <span class="grid-item data-title">Femur Head Diameter: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.FemurHeadDiameter != null ? ViewBag.Bodyanalysis.FemurHeadDiameter : "No Data")</span>
+                <span class="grid-item data-title">Humerus Head Diameter: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.HumerusHeadDiameter != null ? ViewBag.Bodyanalysis.HumerusHeadDiameter : "No Data")</span>
+                <span class="grid-item data-title">Femur Length: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.FemurLength != null ? ViewBag.Bodyanalysis.FemurLength : "No Data")</span>
+                <span class="grid-item data-title">Humerus Length: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.HumerusLength != null ? ViewBag.Bodyanalysis.HumerusLength : "No Data")</span>
+                <span class="grid-item data-title">Tibia: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Tibia != null ? ViewBag.Bodyanalysis.Tibia : "No Data")</span>
+                <span class="grid-item data-title">Estimate Stature: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.EstimateStature != null ? ViewBag.Bodyanalysis.EstimateStature : "No Data")</span>
+                <span class="grid-item data-title">Osteophytosis: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Osteophytosis != null ? ViewBag.Bodyanalysis.Osteophytosis : "No Data")</span>
+                <span class="grid-item data-title">Caries Periodontal Disease: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.CariesPeriodontalDisease != null ? ViewBag.Bodyanalysis.CariesPeriodontalDisease : "No Data")</span>
+                <span class="grid-item data-title">Notes: </span>
+                <span class="grid-item">@(ViewBag.Bodyanalysis.Notes != null ? ViewBag.Bodyanalysis.Notes : "No Data")</span>
+
+            </div>
+
+        }
+        @if (ViewBag.Textile != null)
+        {
+            <h2>Textile Data for Selected Burial</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Locale: </span>
+                <span class="grid-item">@(ViewBag.Textile.Locale != null ? ViewBag.Textile.Locale : "No Data")</span>
+                <span class="grid-item data-title">Description: </span>
+                <span class="grid-item">@(ViewBag.Textile.Description != null ? ViewBag.Textile.Description : "No Data")</span>
+                <span class="grid-item data-title">Estimated Period: </span>
+                <span class="grid-item">@(ViewBag.Textile.Estimatedperiod != null ? ViewBag.Textile.Estimatedperiod : "No Data")</span>
+                <span class="grid-item data-title">Sample Date: </span>
+                <span class="grid-item">@(ViewBag.Textile.Sampledate != null ? ViewBag.Textile.Sampledate : "No Data")</span>
+                <span class="grid-item data-title">Photographed Date: </span>
+                <span class="grid-item">@(ViewBag.Textile.Photographeddate != null ? ViewBag.Textile.Photographeddate : "No Data")</span>
+                <span class="grid-item data-title">Direction: </span>
+                <span class="grid-item">@(ViewBag.Textile.Direction != null ? ViewBag.Textile.Direction : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Analysis != null)
+        {
+            <h2>Analysis Data for Identified Textile</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Analysis Type: </span>
+                <span class="grid-item">@(ViewBag.Analysis.Analysistype != null ? ViewBag.Analysis.Analysistype : "No Data")</span>
+                <span class="grid-item data-title">Done By: </span>
+                <span class="grid-item">@(ViewBag.Analysis.Doneby != null ? ViewBag.Analysis.Doneby : "No Data")</span>
+                <span class="grid-item data-title">Date: </span>
+                <span class="grid-item">@(ViewBag.Analysis.Date != null ? ViewBag.Analysis.Date : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Decoration != null)
+        {
+            <h2>Decoration Data for Identified Textile</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Value: </span>
+                <span class="grid-item">@(ViewBag.Decoration.Value != null ? ViewBag.Decoration.Value : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Dimension != null)
+        {
+            <h2>Decoration Data for Identified Textile</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Dimension Type: </span>
+                <span class="grid-item">@(ViewBag.Dimension.DimensionType != null ? ViewBag.Dimension.DimensionType : "No Data")</span>
+                <span class="grid-item data-title">Value: </span>
+                <span class="grid-item">@(ViewBag.Dimension.Value != null ? ViewBag.Dimension.Value : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Photodata != null)
+        {
+            <h2>Photo Data for Identified Textile</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Photodata Description: </span>
+                <span class="grid-item">@(ViewBag.Photodata.Description != null ? ViewBag.Photodata.Description : "No Data")</span>
+                <span class="grid-item data-title">Filename: </span>
+                <span class="grid-item">@(ViewBag.Photodata.Filename != null ? ViewBag.Photodata.Filename : "No Data")</span>
+                <span class="grid-item data-title">Date: </span>
+                <span class="grid-item">@(ViewBag.Photodata.Date != null ? ViewBag.Photodata.Date : "No Data")</span>
+                <span class="grid-item data-title">Url: </span>
+                <span class="grid-item">@(ViewBag.Photodata.Url != null ? ViewBag.Photodata.Url : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Structure != null)
+        {
+            <h2>Structure Data for Identified Textile</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Value: </span>
+                <span class="grid-item">@(ViewBag.Structure.Value != null ? ViewBag.Structure.Value : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Textilefunction != null)
+        {
+            <h2>Function Data for Identified Textile</h2><hr />
+            <div class="grid-container">
+                <span class="grid-item data-title">Value: </span>
+                <span class="grid-item">@(ViewBag.Textilefunction.Value != null ? ViewBag.Textilefunction.Value : "No Data")</span>
+            </div>
+        }
+        @if (ViewBag.Yarnmanipulation != null)
+        {
+            <h2>Yarn Manipulation Data for Identified Textile</h2>
+            <div class="grid-container">
+                <span class="grid-item data-title">Thickness: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Thickness != null ? ViewBag.Yarnmanipulation.Thickness : "No Data")</span>
+                <span class="grid-item data-title">Angle: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Angle != null ? ViewBag.Yarnmanipulation.Angle : "No Data")</span>
+                <span class="grid-item data-title">Manipulation: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Manipulation != null ? ViewBag.Yarnmanipulation.Manipulation : "No Data")</span>
+                <span class="grid-item data-title">Material: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Material != null ? ViewBag.Yarnmanipulation.Material : "No Data")</span>
+                <span class="grid-item data-title">Count: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Count != null ? ViewBag.Yarnmanipulation.Count : "No Data")</span>
+                <span class="grid-item data-title">Component: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Component != null ? ViewBag.Yarnmanipulation.Component : "No Data")</span>
+                <span class="grid-item data-title">Ply: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Ply != null ? ViewBag.Yarnmanipulation.Ply : "No Data")</span>
+                <span class="grid-item data-title">Direction: </span>
+                <span class="grid-item">@(ViewBag.Yarnmanipulation.Direction != null ? ViewBag.Yarnmanipulation.Direction : "No Data")</span>
+            </div>
+        }
+    </div>
+</div>
