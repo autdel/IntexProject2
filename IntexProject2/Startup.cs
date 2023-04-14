@@ -42,6 +42,7 @@ namespace IntexProject2
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.ConsentCookie.SecurePolicy = CookieSecurePolicy.Always;
             });
 
             services.AddAuthentication(
