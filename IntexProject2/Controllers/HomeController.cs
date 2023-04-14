@@ -198,5 +198,11 @@ namespace IntexProject2.Controllers
 
             return View("Confirmation");
         }
+
+        public ActionResult RemoveEntry(long id)
+        {
+            _burialsRepo.RemoveEntry(id);
+            return View("Confirmation");
+        }
     }
 }

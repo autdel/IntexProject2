@@ -51,6 +51,7 @@ namespace IntexProject2.Repository
         #endregion
         // ----------------------------------------- REMOVE METHODS -------------------------------------------//
         #region
+        public void RemoveEntry(long id);
 
         #endregion
     }

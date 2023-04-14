@@ -381,3 +381,6 @@ else if ((int)ViewData["Form"] == 3)
     </form>
 }
 
+<form method="post" asp-action="RemoveEntry" asp-route-id="@ViewBag.Burialmain.Id">
+    <button type="submit">Remove Burial Data</button>
+</form>

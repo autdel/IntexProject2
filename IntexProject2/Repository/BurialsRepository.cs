@@ -289,7 +289,12 @@ namespace IntexProject2.Repository
         #endregion
         // ----------------------------------------- REMOVE METHODS -------------------------------------------//
         #region
-
+        public void RemoveEntry(long id)
+        {
+            Burialmain bm = context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
+            context.Remove(bm);
+            context.SaveChanges();
+        }
         #endregion
     }
 }
