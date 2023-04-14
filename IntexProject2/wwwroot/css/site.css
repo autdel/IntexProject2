@@ -144,13 +144,13 @@ font-size: medium;
 
 /* Filter styles
 -------------------------------------------------- */
-form {
+.filter-form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-form > div {
+.filter-form div {
     flex: 1;
     margin-right: 10px;
 }
