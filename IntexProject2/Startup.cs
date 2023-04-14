@@ -82,9 +82,9 @@ namespace IntexProject2
             });
 
             services.AddScoped<IBurialsRepository, BurialsRepository>();
-//            services.AddSingleton<InferenceSession>(
-//            new InferenceSession("YESTHEmodel.onnx")
-//);
+            services.AddSingleton<InferenceSession>(
+            new InferenceSession("YESTHEmodel.onnx")
+);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
