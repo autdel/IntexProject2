@@ -192,3 +192,26 @@ font-size: medium;
     background-color: #ffffff;
     margin: 2%;
 }
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.margins {
+    margin: 10px 5px 10px 5px;
+}

@@ -273,23 +273,26 @@ namespace IntexProject2.Repository
         #endregion
         // ----------------------------------------- UPDATE METHODS -------------------------------------------//
         #region
-        //public Burialmain Edit(long id)
-        //{
-        //    return context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
-        //}
-        //public void SaveToDB(Burialmain bm)
-        //{
-        //    Burialmain bmain = context.Burialmain.Where(x => x.Id == bm.Id).FirstOrDefault();
+        public Burialmain Edit(long id)
+        {
+            return context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public void SaveToDB(long id)
+        {
+            Burialmain bmain = context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
 
-        //    bmain = bm;
-
-        //    context.Burialmain.Update(bm);
-        //    context.SaveChanges();
-        //}
+            context.Burialmain.Update(bmain);
+            context.SaveChanges();
+        }
         #endregion
         // ----------------------------------------- REMOVE METHODS -------------------------------------------//
         #region
-
+        public void RemoveEntry(long id)
+        {
+            Burialmain bm = context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
+            context.Remove(bm);
+            context.SaveChanges();
+        }
         #endregion
     }
 }

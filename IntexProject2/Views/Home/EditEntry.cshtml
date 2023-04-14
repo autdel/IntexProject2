@@ -23,10 +23,11 @@
 
 
 @if ((int)ViewData["Form"] == 1)
-{<form method="post">
+{<form method="post" asp-action="EditData">
     <h1 class="mb-3 line"> Burial Main</h1>
     <div class="container-fluid row">
         <div class="col-sm-6">
+            <input type="hidden" asp-for="Id" value="Id" />
             <div class="mb-3">
                 <label asp-for="Burialnumber" class="form-label"> Burial Number</label>
                 <input asp-for="Burialnumber" class="form-control"  />
@@ -168,7 +169,7 @@
         </div>
         <br />
     </div>
-    <button type="submit" asp-action="SavetoDB" class="btn-dark btn"></button>
+    <button type="submit" class="btn-dark btn"></button>
 </form>
 }
 else if ((int)ViewData["Form"] == 2)
@@ -377,7 +378,14 @@ else if ((int)ViewData["Form"] == 3)
                 </div>
             </div>
         </div>
-        <input type="submit" value="Submit" class="btn-dark btn" />
     </form>
 }
+<div class="text-center">
+    <form method="post" asp-action="EditEntry" asp-route-id="@ViewBag.Burialmain.Id">
+        <button type="submit">Update Burial Data</button>
+    </form>
 
+    <form method="post" asp-action="RemoveEntry" asp-route-id="@ViewBag.Burialmain.Id">
+        <button type="submit">Remove Burial Data</button>
+    </form>
+</div>
