@@ -4,19 +4,74 @@
 @{
 }
 @model BurialViewModel
-<div class="container>">
+
+<div>
+    <h3>Filter Options</h3>
+    <form method="get" action="@Url.Action("Burials")">
+        <div>
+            <label for="ageFilter">Age at Death:</label>
+            <select id="ageFilter" name="ageFilter">
+                <option value="">All</option>
+                <option value="A">Adult - 15+</option>
+                <option value="C">Child - 3-15</option>
+                <option value="I">Infant - 1-3</option>
+                <option value="N">Newborn - 0-1</option>
+            </select>
+        </div>
+        <div>
+            <label for="hairColorFilter">Hair Color:</label>
+            <select id="hairColorFilter" name="hairColorFilter">
+                <option value="">All</option>
+                <option value="B">Brown</option>
+                <option value="K">Black</option>
+                <option value="A">Brown-Red</option>
+                <option value="R">Red</option>
+                <option value="D">Blond</option>
+            </select>
+        </div>
+        <div>
+            <label for="burialDepthFilter">Burial Depth:</label>
+            <input type="text" id="burialDepthFilter" name="burialDepthFilter" />
+        </div>
+        <div>
+            <label for="headDirectionFilter">Head Direction:</label>
+            <select id="headDirectionFilter" name="headDirectionFilter">
+                <option value="">All</option>
+                <option value="E">East-Facing</option>
+                <option value="W">West-Facing</option>
+                <option value="I">Indeterminate</option>
+            </select>
+        </div>
+        <div>
+            <label for="sexFilter">Sex:</label>
+            <select id="sexFilter" name="sexFilter">
+                <option value="">All</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <button type="submit">Apply Filters</button>
+    </form>
+</div>
+
+
+<div class="text-center">
+    Pages
+    <div page-model="@Model.PageInfo" page-action="Burials" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark" class="btn-group pull-right m-1">
+    </div>
+</div>
+
+<div class="container">
     <div class="row">
         @foreach (Burialmain b in Model.Burials)
         {
 
-            <div class="col-md-6">
+            <div class="col-sm-4">
                 <partial name="BurialSummary" model="b" />
             </div>
-        
-    }
+
+        }
     </div>
-</div>
-<div page-model="@Model.PageInfo" page-action="Burials" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-outline-dark"
-     page-class-selected="btn-dark" class="btn-group pull-right m-1">
 </div>

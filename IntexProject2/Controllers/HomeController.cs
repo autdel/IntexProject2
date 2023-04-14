@@ -31,32 +31,62 @@ namespace IntexProject2.Controllers
         {
             return View();
         }
+        public IActionResult MummyPredict()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public ActionResult Burials(int pageNum =1)
-        {
-            int pageSize = 50;
 
-            var burial = new BurialViewModel
+        public ActionResult Burials(int pageNum = 1, string ageFilter = null, string hairColorFilter = null, string burialDepthFilter = null, string headDirectionFilter = null, string sexFilter = null)
+        {
+            int pageSize = 51;
+
+
+            var burialView = new BurialViewModel
             {
                 Burials = _burialsRepo.Burials
-                .OrderBy(b => b.Area)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+                    .Where(b => (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
+                         && (string.IsNullOrEmpty(hairColorFilter) || b.Haircolor == hairColorFilter)
+                         && (string.IsNullOrEmpty(burialDepthFilter) || b.Depth == burialDepthFilter)
+                         && (string.IsNullOrEmpty(headDirectionFilter) || b.Headdirection == headDirectionFilter)
+                         && (string.IsNullOrEmpty(sexFilter) || b.Sex == sexFilter))
+                    .OrderBy(b => b.Burialnumber)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks =
-                        (_burialsRepo.Burials.Count()),
+                    TotalNumBurials =
+                        (string.IsNullOrEmpty(ageFilter) &&
+                            string.IsNullOrEmpty(hairColorFilter) &&
+                            string.IsNullOrEmpty(burialDepthFilter) &&
+                            string.IsNullOrEmpty(headDirectionFilter) &&
+                            string.IsNullOrEmpty(sexFilter)) ? _burialsRepo.Burials.Count()
+                        : _burialsRepo.Burials
+                            .Where(b => (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
+                         && (string.IsNullOrEmpty(hairColorFilter) || b.Haircolor == hairColorFilter)
+                         && (string.IsNullOrEmpty(burialDepthFilter) || b.Depth == burialDepthFilter)
+                         && (string.IsNullOrEmpty(headDirectionFilter) || b.Headdirection == headDirectionFilter)
+                         && (string.IsNullOrEmpty(sexFilter) || b.Sex == sexFilter))
+                            .Count(),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
-                }
+                },
+
+                AgeFilter = ageFilter,
+                HairColorFilter = hairColorFilter,
+                BurialDepthFilter = burialDepthFilter,
+                HeadDirectionFilter = headDirectionFilter,
+                SexFilter = sexFilter
             };
-            return View(burial);
+        
+
+            return View(burialView);
         }
 
         public IActionResult BurialInfo(long burialID)
@@ -78,6 +108,27 @@ namespace IntexProject2.Controllers
                 ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(textile.Id);
                 ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(textile.Id); 
             }
+            return View();
+        }
+
+        public ActionResult CreateEntry(int formID = 0)
+        {
+            ViewData["Form"] = formID;
+
+            
+            return View();
+        }
+
+        public ActionResult SelectEntry(int formID)
+        {
+            return RedirectToAction("CreateEntry", "Home", new { formID = formID });
+        }
+
+        public ActionResult EditEntry(int formID = 0)
+        {
+            ViewData["Form"] = formID;
+
+
             return View();
         }
     }
