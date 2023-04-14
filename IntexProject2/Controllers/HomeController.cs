@@ -163,8 +163,14 @@ namespace IntexProject2.Controllers
         {
             ViewData["Form"] = formID;
 
-            
             return View();
+        }
+   
+        [HttpPost]
+        public ActionResult CreateEntry(Burialmain bm)
+        {
+            _burialsRepo.AddtoDB(bm);
+            return View("Confirmation",bm);
         }
 
         public ActionResult SelectEntry(int formID)

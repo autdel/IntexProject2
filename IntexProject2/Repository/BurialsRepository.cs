@@ -178,7 +178,12 @@ namespace IntexProject2.Repository
         }
 
 
-
+        public long GetLatestBurialID()
+        {
+            var burial = context.Burialmain.OrderByDescending(x => x.Id).FirstOrDefault();
+            long lastID = burial.Id;
+            return lastID;
+        }
 
 
         #endregion
@@ -255,12 +260,32 @@ namespace IntexProject2.Repository
         #endregion
 
         // ----------------------------------------- CREATE METHODS -------------------------------------------//
-        #region
 
+
+        #region
+        public void AddtoDB(Burialmain bm)
+        {
+            long newID = GetLatestBurialID() + 1;
+            bm.Id = newID;
+            context.Add(bm);
+            context.SaveChanges();
+        }
         #endregion
         // ----------------------------------------- UPDATE METHODS -------------------------------------------//
         #region
+        //public Burialmain Edit(long id)
+        //{
+        //    return context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
+        //}
+        //public void SaveToDB(Burialmain bm)
+        //{
+        //    Burialmain bmain = context.Burialmain.Where(x => x.Id == bm.Id).FirstOrDefault();
 
+        //    bmain = bm;
+
+        //    context.Burialmain.Update(bm);
+        //    context.SaveChanges();
+        //}
         #endregion
         // ----------------------------------------- REMOVE METHODS -------------------------------------------//
         #region

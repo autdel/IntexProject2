@@ -43,7 +43,6 @@
     <Content Include="YESTHEmodel.onnx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Filters\" />

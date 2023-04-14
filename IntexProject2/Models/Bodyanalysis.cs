@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace IntexProject2.Models
 {
     public partial class Bodyanalysis
     {
+        [Key]
+        [Required]
         public int BodyAnalysisId { get; set; }
         public string DateOfExamination { get; set; }
         public decimal? PreservationIndex { get; set; }
