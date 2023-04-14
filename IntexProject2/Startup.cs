@@ -50,6 +50,7 @@ namespace IntexProject2
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IBurialRepository, EFBurialRepository>();
             services.AddControllersWithViews();
@@ -68,12 +69,12 @@ namespace IntexProject2
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
-                options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = true;
+                options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 15;
-                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequiredUniqueChars = 5;
             });
 
             services.AddScoped<IBurialsRepository, BurialsRepository>();
