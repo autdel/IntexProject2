@@ -46,8 +46,8 @@ namespace IntexProject2.Repository
         #endregion
         // ----------------------------------------- UPDATE METHODS -------------------------------------------//
         #region
-        public Burialmain Edit(long id);
-        public void SaveToDB(Burialmain bm);
+        //public Burialmain Edit(long id);
+        //public void SaveToDB(Burialmain bm);
         #endregion
         // ----------------------------------------- REMOVE METHODS -------------------------------------------//
         #region
