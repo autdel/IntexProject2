@@ -277,13 +277,11 @@ namespace IntexProject2.Repository
         {
             return context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
         }
-        public void SaveToDB(Burialmain bm)
+        public void SaveToDB(long id)
         {
-            Burialmain bmain = context.Burialmain.Where(x => x.Id == bm.Id).FirstOrDefault();
+            Burialmain bmain = context.Burialmain.Where(x => x.Id == id).FirstOrDefault();
 
-            bmain = bm;
-
-            context.Burialmain.Update(bm);
+            context.Burialmain.Update(bmain);
             context.SaveChanges();
         }
         #endregion

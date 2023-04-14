@@ -184,6 +184,16 @@ namespace IntexProject2.Controllers
             Burialmain bm = _burialsRepo.Edit(id);
             return RedirectToAction("EditEntry", bm);
         }
+
+        [HttpPost]
+        public IActionResult EditData(Burialmain bm)
+        {
+            ViewBag.Burialmain = bm;
+            ViewData["Form"] = 1;
+            return View("EditEntry");
+        }
+
+
         [HttpGet]
         public ActionResult EditEntry(Burialmain bm)
         {
@@ -192,9 +202,9 @@ namespace IntexProject2.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SavetoDB(Burialmain bm)
+        public IActionResult EditEntry(long id)
         {
-            _burialsRepo.SaveToDB(bm);
+            //_burialsRepo.SaveToDB(bm);
 
             return View("Confirmation");
         }
