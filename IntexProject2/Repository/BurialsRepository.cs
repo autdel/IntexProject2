@@ -178,13 +178,26 @@ namespace IntexProject2.Repository
         }
 
 
-
+        public long GetLatestBurialID()
+        {
+            var burial = context.Burialmain.OrderByDescending(x => x.Id).FirstOrDefault();
+            long lastID = burial.Id;
+            return lastID;
+        }
 
 
         #endregion
         // ----------------------------------------- CREATE METHODS -------------------------------------------//
-        #region
 
+
+        #region
+        public void AddtoDB(Burialmain bm)
+        {
+            long newID = GetLatestBurialID() + 1;
+            bm.Id = newID;
+            context.Add(bm);
+            context.SaveChanges();
+        }
         #endregion
         // ----------------------------------------- UPDATE METHODS -------------------------------------------//
         #region

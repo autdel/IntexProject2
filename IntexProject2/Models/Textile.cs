@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace IntexProject2.Models
 {
     public partial class Textile
     {
+        [Key]
+        [Required]
         public long Id { get; set; }
         public string Locale { get; set; }
         public int? Textileid { get; set; }

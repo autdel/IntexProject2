@@ -15,11 +15,11 @@ namespace IntexProject2.Controllers
 {
     public class HomeController : Controller
     {
-        private IBurialsRepository _burialsRepo;
+        private IBurialsRepository burialsRepo;
 
         public HomeController(IBurialsRepository context)
         {
-            _burialsRepo = context;
+            burialsRepo = context;
         }
 
         public IActionResult Index()
@@ -47,7 +47,7 @@ namespace IntexProject2.Controllers
 
             var burial = new BurialViewModel
             {
-                Burials = _burialsRepo.Burials
+                Burials = burialsRepo.Burials
                 .OrderBy(b => b.Area)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
@@ -55,7 +55,7 @@ namespace IntexProject2.Controllers
                 PageInfo = new PageInfo
                 {
                     TotalNumBooks =
-                        (_burialsRepo.Burials.Count()),
+                        (burialsRepo.Burials.Count()),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
@@ -65,20 +65,20 @@ namespace IntexProject2.Controllers
 
         public IActionResult RepoTesting()
         {
-            ViewBag.Burials = _burialsRepo.GetAllBurialmain(); // List
-            ViewBag.Bodyanalysis = _burialsRepo.GetAllBodyanalysis(); // List
-            ViewBag.SelectedBA = _burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 0 or 1 item
-            ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(33495522228568350); // 0 or 1 item
-            ViewBag.Colors = _burialsRepo.GetColorsByTextileID(33495522228568069); // List if multiple
-            ViewBag.Decoration = _burialsRepo.GetDecorationByTextileID(33495522228568069); // 0 or 1 item
-            ViewBag.Dimensions = _burialsRepo.GetDimensionsByTextileID(33495522228568357); // List if multiple
-            ViewBag.Photodata = _burialsRepo.GetPhotoDataByTextileID(33495522228569209); // List if multiple
-            ViewBag.Structures = _burialsRepo.GetStructuresByTextileID(33495522228568403); // List if multiple
-            ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(33495522228568370); // List if multiple
-            ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(33495522228568816); // List if multiple
+            ViewBag.Burials = burialsRepo.GetAllBurialmain(); // List
+            ViewBag.Bodyanalysis = burialsRepo.GetAllBodyanalysis(); // List
+            ViewBag.SelectedBA = burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 0 or 1 item
+            ViewBag.Analysis = burialsRepo.GetAnalysisByTextileID(33495522228568350); // 0 or 1 item
+            ViewBag.Colors = burialsRepo.GetColorsByTextileID(33495522228568069); // List if multiple
+            ViewBag.Decoration = burialsRepo.GetDecorationByTextileID(33495522228568069); // 0 or 1 item
+            ViewBag.Dimensions = burialsRepo.GetDimensionsByTextileID(33495522228568357); // List if multiple
+            ViewBag.Photodata = burialsRepo.GetPhotoDataByTextileID(33495522228569209); // List if multiple
+            ViewBag.Structures = burialsRepo.GetStructuresByTextileID(33495522228568403); // List if multiple
+            ViewBag.Textilefunction = burialsRepo.GetTextileFunctionByTextileID(33495522228568370); // List if multiple
+            ViewBag.Yarnmanipulation = burialsRepo.GetYarnManipulationByTextileID(33495522228568816); // List if multiple
             return View();
         }
-
+        [HttpGet]
         public ActionResult CreateEntry(int formID = 0)
         {
             ViewData["Form"] = formID;
@@ -86,18 +86,31 @@ namespace IntexProject2.Controllers
             
             return View();
         }
+   
+        [HttpPost]
+        public ActionResult CreateEntry(Burialmain bm)
+        {
+            burialsRepo.AddtoDB(bm);
+            return View("Confirmation",bm);
+        }
 
         public ActionResult SelectEntry(int formID)
         {
             return RedirectToAction("CreateEntry", "Home", new { formID = formID });
         }
-
+        [HttpGet]
         public ActionResult EditEntry(int formID = 0)
         {
             ViewData["Form"] = formID;
 
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditEntry(Burialmain bm)
+        {
+            return View("Confirmation",bm);
         }
     }
 }

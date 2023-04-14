@@ -23,13 +23,17 @@ namespace IntexProject2.Repository
         public List<Structure> GetStructuresByTextileID(long textileID);
         public List<Textilefunction> GetTextileFunctionByTextileID(long textileID);
         public List<Yarnmanipulation> GetYarnManipulationByTextileID(long textileID);
-        
+        public long GetLatestBurialID();
+
 
 
 
         #endregion
         // ----------------------------------------- CREATE METHODS -------------------------------------------//
         #region
+
+        public void AddtoDB(Burialmain bm);
+
 
         #endregion
         // ----------------------------------------- UPDATE METHODS -------------------------------------------//

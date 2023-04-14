@@ -31,7 +31,6 @@
     <None Remove="Views\Shared\Components\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
