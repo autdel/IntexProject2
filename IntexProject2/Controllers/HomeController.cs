@@ -136,7 +136,7 @@ namespace IntexProject2.Controllers
             }
             return View();
         }
-
+        [Authorize]
         public ActionResult CreateEntry(int formID = 0)
         {
             ViewData["Form"] = formID;
@@ -150,6 +150,7 @@ namespace IntexProject2.Controllers
             return RedirectToAction("CreateEntry", "Home", new { formID = formID });
         }
 
+        [Authorize]
         public ActionResult EditEntry(int formID = 0)
         {
             ViewData["Form"] = formID;
