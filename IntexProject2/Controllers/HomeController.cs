@@ -179,17 +179,40 @@ namespace IntexProject2.Controllers
         }
 
         [Authorize]
-        public ActionResult EditEntry(int formID = 0)
+        public ActionResult EditData(long id)
         {
-            ViewData["Form"] = formID;
-
-
-            return View();
+            Burialmain bm = _burialsRepo.Edit(id);
+            return RedirectToAction("EditEntry", bm);
         }
 
-        public ActionResult Supervised()
+        [HttpPost]
+        public IActionResult EditData(Burialmain bm)
         {
+            ViewBag.Burialmain = bm;
+            ViewData["Form"] = 1;
+            return View("EditEntry");
+        }
+
+
+        [HttpGet]
+        public ActionResult EditEntry(Burialmain bm)
+        {
+            ViewBag.Burialmain = bm;
+            ViewData["Form"] = 1;
             return View();
+        }
+        [HttpPost]
+        public IActionResult EditEntry(long id)
+        {
+            //_burialsRepo.SaveToDB(bm);
+
+            return View("Confirmation");
+        }
+
+        public ActionResult RemoveEntry(long id)
+        {
+            _burialsRepo.RemoveEntry(id);
+            return View("Confirmation");
         }
     }
 }
