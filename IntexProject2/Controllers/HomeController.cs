@@ -10,18 +10,37 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace IntexProject2.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+
         private IBurialsRepository _burialsRepo;
 
-        public HomeController(IBurialsRepository context)
+        public HomeController(IBurialsRepository context, IHttpContextAccessor httpContextAccessor)
         {
             _burialsRepo = context;
+            _httpContextAccessor = httpContextAccessor;
         }
+
+        public PartialViewResult GetCookieConsentPartialView()
+        {
+            bool accepted = _httpContextAccessor.HttpContext.Request.Cookies["gdpr_cookie"] == "true";
+
+            if (accepted)
+            {
+                return null;
+            }
+
+            return PartialView("_CookieConsentBanner");
+        }
+
 
         [AllowAnonymous]
         public IActionResult Index()
