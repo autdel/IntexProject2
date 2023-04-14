@@ -178,25 +178,25 @@ namespace IntexProject2.Controllers
             return RedirectToAction("CreateEntry", "Home", new { formID = formID });
         }
 
-        //[Authorize]
-        //public ActionResult EditData(long id)
-        //{
-        //    Burialmain bm = _burialsRepo.Edit(id);
-        //    return RedirectToAction("EditEntry", bm);
-        //}
-       //[HttpGet]
-       // public ActionResult EditEntry(Burialmain bm)
-       // {
-       //     ViewBag.Burialmain = bm;
-       //     ViewData["Form"] = 1;
-       //     return View();
-       // }
-       // [HttpPost]
-       // public IActionResult SavetoDB(Burialmain bm)
-       // {
-       //     _burialsRepo.SaveToDB(bm);
-            
-       //     return View("Confirmation");
-       // }
+        [Authorize]
+        public ActionResult EditData(long id)
+        {
+            Burialmain bm = _burialsRepo.Edit(id);
+            return RedirectToAction("EditEntry", bm);
+        }
+        [HttpGet]
+        public ActionResult EditEntry(Burialmain bm)
+        {
+            ViewBag.Burialmain = bm;
+            ViewData["Form"] = 1;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SavetoDB(Burialmain bm)
+        {
+            _burialsRepo.SaveToDB(bm);
+
+            return View("Confirmation");
+        }
     }
 }
