@@ -10,7 +10,7 @@
     <form method="get" action="@Url.Action("Burials")">
         <div>
             <label for="ageFilter">Age at Death:</label>
-            <select id="ageFilter" name="ageFilter">
+            <select id="ageFilter" name="ageFilter" style="border:none">
                 <option value="">All</option>
                 <option value="A">Adult - 15+</option>
                 <option value="C">Child - 3-15</option>
@@ -20,7 +20,7 @@
         </div>
         <div>
             <label for="hairColorFilter">Hair Color:</label>
-            <select id="hairColorFilter" name="hairColorFilter">
+            <select id="hairColorFilter" name="hairColorFilter" style="border:none">
                 <option value="">All</option>
                 <option value="B">Brown</option>
                 <option value="K">Black</option>
@@ -31,11 +31,11 @@
         </div>
         <div>
             <label for="burialDepthFilter">Burial Depth:</label>
-            <input type="text" id="burialDepthFilter" name="burialDepthFilter" />
+            <input type="text" id="burialDepthFilter" name="burialDepthFilter" style="border:none"/>
         </div>
         <div>
             <label for="headDirectionFilter">Head Direction:</label>
-            <select id="headDirectionFilter" name="headDirectionFilter">
+            <select id="headDirectionFilter" name="headDirectionFilter" style="border:none">
                 <option value="">All</option>
                 <option value="E">East-Facing</option>
                 <option value="W">West-Facing</option>
@@ -44,13 +44,14 @@
         </div>
         <div>
             <label for="sexFilter">Sex:</label>
-            <select id="sexFilter" name="sexFilter">
+            <select id="sexFilter" name="sexFilter" style="border:none">
                 <option value="">All</option>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
             </select>
         </div>
-        <button type="submit">Apply Filters</button>
+        <button type="submit" class="btn btn-dark" style="margin-right:5px;">Apply Filters</button>
+        <button type="submit" class="btn btn-dark" asp-action="CreateEntry" >Create Record</button>
     </form>
 </div>
 
