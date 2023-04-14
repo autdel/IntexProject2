@@ -209,11 +209,16 @@ namespace IntexProject2.Controllers
             return View("Confirmation");
         }
 
-        [AllowAnonymous]
-        public ActionResult Supervised()
+        public ActionResult RemoveEntry(long id)
         {
             _burialsRepo.RemoveEntry(id);
             return View("Confirmation");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Supervised()
+        {
+            return View();
         }
         [AllowAnonymous]
         public ActionResult Unsupervised()
