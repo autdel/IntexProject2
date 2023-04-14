@@ -9,10 +9,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace IntexProject2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IBurialsRepository _burialsRepo;
@@ -22,15 +23,19 @@ namespace IntexProject2.Controllers
             _burialsRepo = context;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
         }
+
+        [AllowAnonymous]
         public IActionResult MummyPredict()
         {
             return View();
@@ -42,6 +47,7 @@ namespace IntexProject2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [AllowAnonymous]
         public ActionResult Burials(int pageNum = 1, string ageFilter = null, string hairColorFilter = null, string burialDepthFilter = null, string headDirectionFilter = null, string sexFilter = null)
         {
             int pageSize = 51;
@@ -89,6 +95,7 @@ namespace IntexProject2.Controllers
             return View(burialView);
         }
 
+        [AllowAnonymous]
         public IActionResult BurialInfo(long burialID)
         {
             ViewBag.BurialID = burialID;
