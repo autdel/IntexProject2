@@ -19,6 +19,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
+
 
 namespace IntexProject2
 {
@@ -36,7 +40,7 @@ namespace IntexProject2
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -77,6 +81,9 @@ namespace IntexProject2
             });
 
             services.AddScoped<IBurialsRepository, BurialsRepository>();
+            services.AddSingleton<InferenceSession>(
+            new InferenceSession("YESTHEmodel.onnx")
+);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -103,14 +110,15 @@ namespace IntexProject2
 
             app.UseAuthentication();
             app.UseAuthorization();
-           
 
-            app.Use(async (context, next) =>
-            {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self';");
-                context.Response.Headers.Add("Set-Cookie", "name=value; HttpOnly; SameSite=None; Secure");
-                await next();
-            });
+
+            //app.Use(async (context, next) =>
+            //{
+            //    context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self'");
+            ///    await next();
+            //});
+
+
 
             app.UseEndpoints(endpoints =>
             {
