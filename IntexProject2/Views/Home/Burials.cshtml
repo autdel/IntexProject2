@@ -7,7 +7,45 @@
 
 <div>
     <h3>Filter Options</h3>
-    <form method="get" action="@Url.Action("Burials")">
+    <form method="get" action="@Url.Action("Burials")" class="filter-form">
+        <div>
+            <label for="SquareNSFilter">Square North/South:</label>
+            <input type="text" id="SquareNSFilter" name="SquareNSFilter" />
+        </div>
+        <div>
+            <label for="NSFilter">North/South:</label>
+            <select id="NSFilter" name="NSFilter">
+                <option value="">All</option>
+                <option value="N">North</option>
+                <option value="S">South</option>
+            </select>
+        </div>
+        <div>
+            <label for="SquareEWFilter">Square East/West:</label>
+            <input type="text" id="SquareEWFilter" name="SquareEWFilter" />
+        </div>
+        <div>
+            <label for="EWFilter">East/West:</label>
+            <select id="EWFilter" name="EWFilter">
+                <option value="">All</option>
+                <option value="E">East</option>
+                <option value="W">West</option>
+            </select>
+        </div>
+        <div>
+            <label for="BurialNumFilter">Burial Number:</label>
+            <input type="text" id="BurialNumFilter" name="BurialNumFilter" />
+        </div>
+        <div>
+            <label for="AreaFilter">Area:</label>
+            <select id="AreaFilter" name="AreaFilter">
+                <option value="">All</option>
+                <option value="NE">North East</option>
+                <option value="NW">North West</option>
+                <option value="SE">South East</option>
+                <option value="SW">South West</option>
+            </select>
+        </div>
         <div>
             <label for="ageFilter">Age at Death:</label>
             <select id="ageFilter" name="ageFilter" style="border:none">
@@ -56,7 +94,7 @@
 </div>
 
 
-<div class="text-center">
+<div class="text-center m-3">
     Pages
     <div page-model="@Model.PageInfo" page-action="Burials" page-classes-enabled="true"
          page-class="btn" page-class-normal="btn-outline-dark"

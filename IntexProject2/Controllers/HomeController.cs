@@ -67,7 +67,7 @@ namespace IntexProject2.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Burials(int pageNum = 1, string ageFilter = null, string hairColorFilter = null, string burialDepthFilter = null, string headDirectionFilter = null, string sexFilter = null)
+        public ActionResult Burials(int pageNum = 1, string squareNSFilter = null, string nsFilter = null, string squareEWFilter = null, string ewFilter = null, string burialNumFilter = null, string areaFilter = null,  string ageFilter = null, string hairColorFilter = null, string burialDepthFilter = null, string headDirectionFilter = null, string sexFilter = null)
         {
             int pageSize = 51;
 
@@ -75,7 +75,12 @@ namespace IntexProject2.Controllers
             var burialView = new BurialViewModel
             {
                 Burials = _burialsRepo.Burials
-                    .Where(b => (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
+                    .Where(b => (string.IsNullOrEmpty(squareNSFilter) || b.Squarenorthsouth == squareNSFilter)
+                         && (string.IsNullOrEmpty(nsFilter) || b.Northsouth == nsFilter)
+                         && (string.IsNullOrEmpty(squareEWFilter) || b.Squareeastwest == squareEWFilter)
+                         && (string.IsNullOrEmpty(ewFilter) || b.Eastwest == ewFilter)
+                         && (string.IsNullOrEmpty(burialNumFilter) || b.Burialnumber == burialNumFilter)
+                         && (string.IsNullOrEmpty(areaFilter) || b.Area == areaFilter)
                          && (string.IsNullOrEmpty(hairColorFilter) || b.Haircolor == hairColorFilter)
                          && (string.IsNullOrEmpty(burialDepthFilter) || b.Depth == burialDepthFilter)
                          && (string.IsNullOrEmpty(headDirectionFilter) || b.Headdirection == headDirectionFilter)
@@ -87,13 +92,25 @@ namespace IntexProject2.Controllers
                 PageInfo = new PageInfo
                 {
                     TotalNumBurials =
-                        (string.IsNullOrEmpty(ageFilter) &&
+                        (string.IsNullOrEmpty(squareNSFilter) &&
+                            string.IsNullOrEmpty(ageFilter) &&
+                            string.IsNullOrEmpty(nsFilter) &&
+                            string.IsNullOrEmpty(squareEWFilter)&&
+                            string.IsNullOrEmpty(ewFilter) &&
+                            string.IsNullOrEmpty(burialNumFilter) &&
+                            string.IsNullOrEmpty(areaFilter) &&
                             string.IsNullOrEmpty(hairColorFilter) &&
                             string.IsNullOrEmpty(burialDepthFilter) &&
                             string.IsNullOrEmpty(headDirectionFilter) &&
                             string.IsNullOrEmpty(sexFilter)) ? _burialsRepo.Burials.Count()
                         : _burialsRepo.Burials
-                            .Where(b => (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
+                            .Where(b => (string.IsNullOrEmpty(squareNSFilter) || b.Squarenorthsouth == squareNSFilter)
+                         && (string.IsNullOrEmpty(nsFilter) || b.Northsouth == nsFilter)
+                         && (string.IsNullOrEmpty(squareEWFilter) || b.Squareeastwest == squareEWFilter)
+                         && (string.IsNullOrEmpty(ewFilter) || b.Eastwest == ewFilter)
+                         && (string.IsNullOrEmpty(burialNumFilter) || b.Burialnumber == burialNumFilter)
+                         && (string.IsNullOrEmpty(areaFilter) || b.Area == areaFilter)
+                         && (string.IsNullOrEmpty(ageFilter) || b.Ageatdeath == ageFilter)
                          && (string.IsNullOrEmpty(hairColorFilter) || b.Haircolor == hairColorFilter)
                          && (string.IsNullOrEmpty(burialDepthFilter) || b.Depth == burialDepthFilter)
                          && (string.IsNullOrEmpty(headDirectionFilter) || b.Headdirection == headDirectionFilter)
@@ -102,7 +119,12 @@ namespace IntexProject2.Controllers
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 },
-
+                SquareNSFilter = squareNSFilter,
+                NSFilter = nsFilter,
+                SquareEWFilter = squareEWFilter,
+                EWFilter = ewFilter,
+                BurialNumFilter = burialNumFilter,
+                AreaFilter = areaFilter,
                 AgeFilter = ageFilter,
                 HairColorFilter = hairColorFilter,
                 BurialDepthFilter = burialDepthFilter,

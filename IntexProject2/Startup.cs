@@ -68,12 +68,12 @@ namespace IntexProject2
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
-                options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = true;
+                options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 15;
-                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequiredUniqueChars = 5;
             });
 
             services.AddScoped<IBurialsRepository, BurialsRepository>();
@@ -107,7 +107,8 @@ namespace IntexProject2
 
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self'");
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' 'class' ; font-src 'self'; img-src 'self'; frame-src 'self';");
+                context.Response.Headers.Add("Set-Cookie", "name=value; HttpOnly; SameSite=None; Secure");
                 await next();
             });
 

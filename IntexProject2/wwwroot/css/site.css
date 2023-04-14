@@ -141,6 +141,25 @@ font-size: medium;
     padding-left: 30px;
 }
 
+
+/* Filter styles
+-------------------------------------------------- */
+.filter-form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-form div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.filter-button {
+    height: 50%;
+    margin-top: 2.5%;
+}
+
 /* Cookie styles
 -------------------------------------------------- */
 .cookie-consent {
