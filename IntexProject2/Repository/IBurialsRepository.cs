@@ -23,11 +23,11 @@ namespace IntexProject2.Repository
         public Structure GetStructureByTextileID(long textileID);
         public Textilefunction GetTextileFunctionByTextileID(long textileID);
         public Yarnmanipulation GetYarnManipulationByTextileID(long textileID);
-
-
+        
 
 
         #endregion
+
 
         // ----------------------------------------- BURIAL INFO GET METHODS -------------------------------------------//
         #region
@@ -40,10 +40,14 @@ namespace IntexProject2.Repository
         // ----------------------------------------- CREATE METHODS -------------------------------------------//
         #region
 
+        public void AddtoDB(Burialmain bm);
+
+
         #endregion
         // ----------------------------------------- UPDATE METHODS -------------------------------------------//
         #region
-
+        //public Burialmain Edit(long id);
+        //public void SaveToDB(Burialmain bm);
         #endregion
         // ----------------------------------------- REMOVE METHODS -------------------------------------------//
         #region

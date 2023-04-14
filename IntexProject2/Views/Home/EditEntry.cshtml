@@ -5,7 +5,7 @@
     ViewBag.Title = "Edit Entry";
 }
 
-@model IntexProject2.Models.EntryViewModel
+@model IntexProject2.Models.Burialmain
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
 <link rel="stylesheet" href="~/css/StyleSheet.css" />
@@ -23,162 +23,153 @@
 
 
 @if ((int)ViewData["Form"] == 1)
-{
-    <form method="post">
-        <h1 class="mb-3 line"> Burial Main</h1>
-        <div class="container-fluid row">
-            <div class="col-sm-6">
-                <div class="mb-3">
-                    <label class="form-label"> Burial ID #</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Burial Number</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Cluster #</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Shaft #</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Area</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Head Direction</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Direction to Head</label>
-                    <select style="border:none">
-                        <option value="">Select a number</option>
-                        <option value="1">West to Head</option>
-                        <option value="2">South to Head</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Direction to Feet</label>
-                    <select style="border:none">
-                        <option value="">Select a number</option>
-                        <option value="1">West to Feet</option>
-                        <option value="2">South to Feet</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Square Direction</label>
-                    <select style="border:none">
-                        <option value="">Select a number</option>
-                        <option value="1">Square NorthSouth</option>
-                        <option value="2">Square EastWest</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> NS Coordinates</label>
-                    <select style="border:none">
-                        <option value="">Select a number</option>
-                        <option value="1">North</option>
-                        <option value="2">South</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> EW Coordinates</label>
-                    <select style="border:none">
-                        <option value="">Select a number</option>
-                        <option value="1">East</option>
-                        <option value="2">West</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Depth</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Face bundles</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Preservation</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Fieldbook page</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Goods</label>
-                    <input type="text" class="form-control" />
-                </div>
+{<form method="post">
+    <h1 class="mb-3 line"> Burial Main</h1>
+    <div class="container-fluid row">
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label asp-for="Burialnumber" class="form-label"> Burial Number</label>
+                <input asp-for="Burialnumber" class="form-control"  />
             </div>
-            <div class="col-sm-6">
-                <div class="mb-3">
-                    <label class="form-label">Text</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Wrapping</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">AdultsubAdult</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Sex</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Age at Death</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Hair</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Hair Color</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Length</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Samples Collected</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Data Expert Initials</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Excavation Recorder</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Photos</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Burial Materials</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Date of Excavation</label>
-                    <input type="date" class="form-control" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"> Fieldbook Excavation Year</label>
-                    <input type="text" class="form-control" />
-                </div>
+            <div class="mb-3">
+                <label asp-for="Clusternumber" class="form-label"> Cluster #</label>
+                <input asp-for="Clusternumber" class="form-control"/>
             </div>
-            <br />
+            <div class="mb-3">
+                <label asp-for="Shaftnumber" class="form-label"> Shaft #</label>
+                <input asp-for="Shaftnumber" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Area" class="form-label">Area</label>
+                <input asp-for="Area" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Headdirection" class="form-label">Head Direction</label>
+                <input asp-for="Headdirection" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Westtohead" class="form-label"> West to Head</label>
+                <input asp-for="Westtohead" class="form-control" />
+            </div>
+            <div>
+                <label asp-for="Southtohead" class="form-label"> South to Head</label>
+                <input asp-for="Southtohead" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Westtofeet" class="form-label"> West to Feet</label>
+                <input asp-for="Westtofeet" class="form-control" />
+            </div>
+            <div>
+                <label asp-for="Southtofeet" class="form-label"> South to Feet</label>
+                <input asp-for="Southtofeet" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Squarenorthsouth" class="form-label"> Square North South</label>
+                <input asp-for="Squarenorthsouth" class="form-control" />
+            </div>
+            <div>
+                <label asp-for="Squareeastwest" class="form-label"> Square East West</label>
+                <input asp-for="Squareeastwest" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Westtohead" class="form-label"> West to Head</label>
+                <input asp-for="Westtohead" class="form-control" />
+            </div>
+            <div>
+                <label asp-for="Northsouth" class="form-label"> North South</label>
+                <input asp-for="Northsouth" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Eastwest" class="form-label"> East West</label>
+                <input asp-for="Eastwest" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Depth" class="form-label">Depth</label>
+                <input class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Facebundles" class="form-label">Face bundles</label>
+                <input asp-for="Facebundles" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Preservation" class="form-label">Preservation</label>
+                <input asp-for="Preservation" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Fieldbookpage" class="form-label">Fieldbook page</label>
+                <input asp-for="Fieldbookpage" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Goods" class="form-label">Goods</label>
+                <input asp-for="Goods" class="form-control" />
+            </div>
         </div>
-        <input type="submit" value="Submit" class="btn-dark btn" />
-    </form>
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <label asp-for="Text" class="form-label">Text</label>
+                <input asp-for="Text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Wrapping" class="form-label">Wrapping</label>
+                <input asp-for="Wrapping" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Adultsubadult" class="form-label">AdultsubAdult</label>
+                <input asp-for="Adultsubadult" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Sex" class="form-label">Sex</label>
+                <input asp-for="Sex" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Ageatdeath" class="form-label"> Age at Death</label>
+                <input asp-for="Ageatdeath" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Hair" class="form-label"> Hair</label>
+                <input asp-for="Hair" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Haircolor" class="form-label">Hair Color</label>
+                <input asp-for="Haircolor" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Length" class="form-label">Length</label>
+                <input asp-for="Length" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Samplescollected" class="form-label">Samples Collected</label>
+                <input asp-for="Samplescollected" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Dataexpertinitials" class="form-label">Data Expert Initials</label>
+                <input asp-for="Dataexpertinitials" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Excavationrecorder" class="form-label"> Excavation Recorder</label>
+                <input asp-for="Excavationrecorder" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Photos" class="form-label"> Photos</label>
+                <input asp-for="Photos" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Burialmaterials" class="form-label"> Burial Materials</label>
+                <input asp-for="Burialmaterials" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Dateofexcavation" class="form-label"> Date of Excavation</label>
+                <input asp-for="Dateofexcavation" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Fieldbookexcavationyear" class="form-label"> Fieldbook Excavation Year</label>
+                <input asp-for="Fieldbookexcavationyear" class="form-control" />
+            </div>
+        </div>
+        <br />
+    </div>
+    <button type="submit" asp-action="SavetoDB" class="btn-dark btn"></button>
+</form>
 }
 else if ((int)ViewData["Form"] == 2)
 {
@@ -336,7 +327,7 @@ else if ((int)ViewData["Form"] == 2)
             </div>
             <br />
         </div>
-        <input type="submit" value="Submit" class="btn-dark btn" />
+        <input type="submit" value="Submit" class="btn-dark btn"/>
     </form>
 
 }
