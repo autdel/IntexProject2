@@ -1,0 +1,169 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    @if (ViewBag.Burialmain != null)
+    {
+
+    <div class="text-center">
+        <h2>Burial Info</h2>
+        <span>ID: @ViewBag.Burialmain.Id</span>
+        <span>Head Direction: @ViewBag.Burialmain.Headdirection</span>
+        <span>Sex: @ViewBag.Burialmain.Sex</span>
+        <span>Depth: @ViewBag.Burialmain.Depth</span>
+    </div>
+
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Bodyanalysis != null)
+    {
+
+        <div class="text-center">
+            <h2>Body Analysis</h2>
+            <span>ID: @ViewBag.Bodyanalysis.BodyAnalysisId</span>
+            <span>Date of Examination: @ViewBag.Bodyanalysis.DateOfExamination</span>
+            <span>Preservation Index: @ViewBag.Bodyanalysis.PreservationIndex</span>
+        </div>
+
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Bodyanalysiskey != null)
+    {
+        <div class="text-center">
+            <h2>Body Analysis Key</h2>
+            <span>Square North South: @ViewBag.Bodyanalysiskey.SquareNorthSouth</span>
+            <span>Square East West: @ViewBag.Bodyanalysiskey.SquareEastWest</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Textile != null)
+    {
+        <div class="text-center">
+            <h2>Textile</h2>
+            <span>ID: @ViewBag.Textile.Id</span>
+            <span>Locale: @ViewBag.Textile.Locale</span>
+            <span>Direction: @ViewBag.Textile.Direction</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Analysis != null)
+    {
+        <div class="text-center">
+            <h2>Analysis</h2>
+            <span>ID: @ViewBag.Analysis.Id</span>
+            <span>Analysis Type: @ViewBag.Analysis.Analysistype</span>            
+            <span>Done By: @ViewBag.Analysis.Doneby</span>
+            <span>AnalysisID: @ViewBag.Analysis.Analysisid</span>
+            <span>Date: @ViewBag.Analysis.Date</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Decoration != null)
+    {
+        <div class="text-center">
+            <h2>Decoration</h2>
+            <span>ID: @ViewBag.Decoration.Id</span>
+            <span>Value: @ViewBag.Decoration.Value</span>
+            <span>ColorID: @ViewBag.Decoration.Decorationid</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Dimension != null)
+    {
+        <div class="text-center">
+            <h2>Dimension</h2>
+            <span>ID: @ViewBag.Dimension.Id</span>
+            <span>Dimension Type: @ViewBag.Dimension.DimensionType</span>
+            <span>Value: @ViewBag.Dimension.Value</span>
+            <span>ColorID: @ViewBag.Dimension.Dimensionid</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Photodata != null)
+    {
+        <div class="text-center">
+            <h2>Photo Data</h2>
+            <span>ID: @ViewBag.Photodata.Id</span>
+            <span>Description: @ViewBag.Photodata.Description</span>
+            <span>Filename: @ViewBag.Photodata.Filename</span>
+            <span>Photo Data ID: @ViewBag.Photodata.Photodataid</span>
+            <span>Date: @ViewBag.Photodata.Date</span>
+            <span>Url: @ViewBag.Photodata.Url</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Structure != null)
+    {
+        <div class="text-center">
+            <h2>Structure</h2>
+            <span>ID: @ViewBag.Structure.Id</span>
+            <span>Value: @ViewBag.Structure.Value</span>
+            <span>Structure ID: @ViewBag.Structure.Structureid</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Textilefunction != null)
+    {
+        <div class="text-center">
+            <h2>Textilefunction</h2>
+            <span>ID: @ViewBag.Textilefunction.Id</span>
+            <span>Value: @ViewBag.Textilefunction.Value</span>
+            <span>Structure ID: @ViewBag.Textilefunction.Textilefunctionid</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+    @if (ViewBag.Yarnmanipulation != null)
+    {
+        <div class="text-center">
+            <h2>Yarnmanipulation</h2>
+            <span>ID: @ViewBag.Yarnmanipulation.Id</span>
+            <span>Thickness: @ViewBag.Yarnmanipulation.Thickness</span>
+            <span>Angle: @ViewBag.Yarnmanipulation.Angle</span>
+            <span>Manipulation: @ViewBag.Yarnmanipulation.Manipulation</span>
+            <span>Material: @ViewBag.Yarnmanipulation.Material</span>
+            <span>Count: @ViewBag.Yarnmanipulation.Count</span>
+            <span>Component: @ViewBag.Yarnmanipulation.Component</span>
+            <span>Ply: @ViewBag.Yarnmanipulation.Ply</span>
+            <span>Yarn Manipulation ID: @ViewBag.Yarnmanipulation.Yarnmanipulationid</span>
+            <span>Direction: @ViewBag.Yarnmanipulation.Direction</span>
+        </div>
+    }
+    else
+    {
+        <h2>No data to display</h2>
+    }
+
+</div>

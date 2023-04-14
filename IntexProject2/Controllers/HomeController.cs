@@ -89,19 +89,25 @@ namespace IntexProject2.Controllers
             return View(burialView);
         }
 
-        public IActionResult RepoTesting()
+        public IActionResult BurialInfo(long burialID)
         {
-            ViewBag.Burials = _burialsRepo.GetAllBurialmain(); // List
-            ViewBag.Bodyanalysis = _burialsRepo.GetAllBodyanalysis(); // List
-            ViewBag.SelectedBA = _burialsRepo.GetBodyAnalysisByBodyAnalysisID(1); // 0 or 1 item
-            ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(33495522228568350); // 0 or 1 item
-            ViewBag.Colors = _burialsRepo.GetColorsByTextileID(33495522228568069); // List if multiple
-            ViewBag.Decoration = _burialsRepo.GetDecorationByTextileID(33495522228568069); // 0 or 1 item
-            ViewBag.Dimensions = _burialsRepo.GetDimensionsByTextileID(33495522228568357); // List if multiple
-            ViewBag.Photodata = _burialsRepo.GetPhotoDataByTextileID(33495522228569209); // List if multiple
-            ViewBag.Structures = _burialsRepo.GetStructuresByTextileID(33495522228568403); // List if multiple
-            ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(33495522228568370); // List if multiple
-            ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(33495522228568816); // List if multiple
+            ViewBag.BurialID = burialID;
+            ViewBag.Burialmain = _burialsRepo.GetBurialmainByBurialID(burialID);
+            ViewBag.Bodyanalysis = _burialsRepo.GetBodyanalysisByBurialID(burialID);
+            ViewBag.Bodyanalysiskey = _burialsRepo.GetBodyanalysiskeyByBurialID(burialID);
+            Textile textile = _burialsRepo.GetTextileByBurialID(burialID);
+            ViewBag.Textile = textile;
+            if (textile != null)
+            {
+                ViewBag.Analysis = _burialsRepo.GetAnalysisByTextileID(textile.Id);
+                ViewBag.Color = _burialsRepo.GetColorByTextileID(textile.Id);
+                ViewBag.Decoration = _burialsRepo.GetDecorationByTextileID(textile.Id); 
+                ViewBag.Dimension = _burialsRepo.GetDimensionByTextileID(textile.Id); 
+                ViewBag.Photodata = _burialsRepo.GetPhotoDataByTextileID(textile.Id);
+                ViewBag.Structures = _burialsRepo.GetStructureByTextileID(textile.Id); 
+                ViewBag.Textilefunction = _burialsRepo.GetTextileFunctionByTextileID(textile.Id);
+                ViewBag.Yarnmanipulation = _burialsRepo.GetYarnManipulationByTextileID(textile.Id); 
+            }
             return View();
         }
 

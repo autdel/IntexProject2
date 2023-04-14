@@ -75,17 +75,17 @@ namespace IntexProject2.Repository
             return ban;
         }
 
-        public List<Color> GetColorsByTextileID(long textileID)
+        public Color GetColorByTextileID(long textileID)
         {
-            List<Color> colors = ((List<Color>)(from t in context.Textile join ct in context.ColorTextile
+            Color color = ((Color)(from t in context.Textile join ct in context.ColorTextile
                         on textileID equals ct.MainTextileid join c in context.Color
                         on ct.MainColorid equals c.Id select new Color
                         {
                             Id = c.Id,
                             Value = c.Value,
                             Colorid = c.Colorid
-                        }).Distinct().ToList());
-            return colors;
+                        }).FirstOrDefault());
+            return color;
         }
 
         public Decoration GetDecorationByTextileID(long textileID)
@@ -101,9 +101,9 @@ namespace IntexProject2.Repository
             return decoration;
         }
 
-        public List<Dimension> GetDimensionsByTextileID(long textileID)
+        public Dimension GetDimensionByTextileID(long textileID)
         {
-            List<Dimension> dimension = ((List<Dimension>)(from t in context.Textile join dt in context.DimensionTextile
+            Dimension dimension = ((Dimension)(from t in context.Textile join dt in context.DimensionTextile
                                 on textileID equals dt.MainTextileid join d in context.Dimension
                                 on dt.MainDimensionid equals d.Id select new Dimension
                                 {
@@ -111,13 +111,13 @@ namespace IntexProject2.Repository
                                     Value = d.Value,
                                     Dimensiontype = d.Dimensiontype,
                                     Dimensionid = d.Dimensionid
-                                }).Distinct().ToList());
+                                }).FirstOrDefault());
             return dimension;
         }
 
-        public List<Photodata> GetPhotoDataByTextileID(long textileID)
+        public Photodata GetPhotoDataByTextileID(long textileID)
         {
-            List<Photodata> pd = ((List<Photodata>)(from t in context.Textile join pdt in context.PhotodataTextile
+            Photodata pd = ((Photodata)(from t in context.Textile join pdt in context.PhotodataTextile
                                 on textileID equals pdt.MainTextileid join p in context.Photodata
                                 on pdt.MainPhotodataid equals p.Id select new Photodata
                                 {
@@ -127,39 +127,39 @@ namespace IntexProject2.Repository
                                     Photodataid = p.Photodataid,
                                     Date = p.Date,
                                     Url = p.Url
-                                }).Distinct().ToList());
+                                }).FirstOrDefault());
             return pd;
         }
 
-        public List<Structure> GetStructuresByTextileID(long textileID)
+        public Structure GetStructureByTextileID(long textileID)
         {
-            List<Structure> structures = ((List<Structure>)(from t in context.Textile join st in context.StructureTextile
+            Structure structures = ((Structure)(from t in context.Textile join st in context.StructureTextile
                                 on textileID equals st.MainTextileid join s in context.Structure
                                 on st.MainStructureid equals s.Id select new Structure
                                 {
                                     Id = s.Id,
                                     Value = s.Value,
                                     Structureid = s.Structureid
-                                }).Distinct().ToList());
+                                }).FirstOrDefault());
             return structures;
         }
 
-        public List<Textilefunction> GetTextileFunctionByTextileID(long textileID)
+        public Textilefunction GetTextileFunctionByTextileID(long textileID)
         {
-            List<Textilefunction> function = ((List<Textilefunction>)(from t in context.Textile join tft in context.TextilefunctionTextile
+            Textilefunction function = ((Textilefunction)(from t in context.Textile join tft in context.TextilefunctionTextile
                                 on textileID equals tft.MainTextileid join tf in context.Textilefunction
                                 on tft.MainTextilefunctionid equals tf.Id select new Textilefunction
                                 {
                                     Id = tf.Id,
                                     Value = tf.Value,
                                     Textilefunctionid = tf.Textilefunctionid
-                                }).Distinct().ToList());
+                                }).FirstOrDefault());
             return function;
         }
 
-        public List<Yarnmanipulation> GetYarnManipulationByTextileID(long textileID)
+        public Yarnmanipulation GetYarnManipulationByTextileID(long textileID)
         {
-            List<Yarnmanipulation> yarn = ((List<Yarnmanipulation>)(from t in context.Textile join ymt in context.YarnmanipulationTextile
+            Yarnmanipulation yarn = ((Yarnmanipulation)(from t in context.Textile join ymt in context.YarnmanipulationTextile
                                 on textileID equals ymt.MainTextileid join ym in context.Yarnmanipulation
                                 on ymt.MainYarnmanipulationid equals ym.Id select new Yarnmanipulation
                                 {
@@ -173,7 +173,7 @@ namespace IntexProject2.Repository
                                     Ply = ym.Ply,
                                     Yarnmanipulationid = ym.Yarnmanipulationid,
                                     Direction = ym.Direction
-                                }).Distinct().ToList());
+                                }).FirstOrDefault());
             return yarn;
         }
 
@@ -182,6 +182,78 @@ namespace IntexProject2.Repository
 
 
         #endregion
+
+        // ----------------------------------------- BURIAL INFO GET METHODS -------------------------------------------//
+        #region
+        public Bodyanalysiskey GetBodyanalysiskeyByBurialID(long burialID)
+        {
+            Bodyanalysiskey bank = ((Bodyanalysiskey)(from b in context.Burialmain join bmba in context.BurialmainBodyanalysis on
+                                               burialID equals bmba.Id join bak in context.Bodyanalysiskey on 
+                                               bmba.BodyAnalysisKeyId equals bak.BodyAnalysisKeyId select new Bodyanalysiskey
+                                {
+                                    BodyAnalysisKeyId = bak.BodyAnalysisKeyId,
+                                    SquareNorthSouth = bak.SquareNorthSouth,
+                                    NorthSouth = bak.NorthSouth,
+                                    SquareEastWest = bak.SquareEastWest,
+                                    EastWest = bak.EastWest,
+                                    Area = bak.Area,
+                                    BurialNumber = bak.BurialNumber
+                                }).FirstOrDefault());
+            return bank;
+        }
+        public Bodyanalysis GetBodyanalysisByBurialID(long burialID)
+        {
+            Bodyanalysis ban = ((Bodyanalysis)(from b in context.Burialmain join bmba in context.BurialmainBodyanalysis on
+                                               burialID equals bmba.Id join bak in context.Bodyanalysiskey on 
+                                               bmba.BodyAnalysisKeyId equals bak.BodyAnalysisKeyId join ba in context.Bodyanalysis
+                                on bak.BodyAnalysisKeyId equals ba.BodyAnalysisId select new Bodyanalysis
+                                {
+                                    BodyAnalysisId = ba.BodyAnalysisId, DateOfExamination = ba.DateOfExamination, 
+                                    PreservationIndex = ba.PreservationIndex, HairColor =  ba.HairColor,
+                                    Observations = ba.Observations, Robust = ba.Robust, 
+                                    SupraorbitalRidges = ba.SupraorbitalRidges, OrbitEdge = ba.OrbitEdge, 
+                                    ParietalBossing = ba.ParietalBossing, Gonion = ba.Gonion, NuchalCrest = ba.NuchalCrest, 
+                                    ZygomaticCrest = ba.ZygomaticCrest, SphenooccipitalSynchrondrosis = ba.SphenooccipitalSynchrondrosis,
+                                    LamboidSuture = ba.LamboidSuture, SquamosSuture = ba.SquamosSuture, 
+                                    ToothAttrition = ba.ToothAttrition, ToothEruption = ba.ToothEruption,
+                                    ToothEruptionAgeEstimate = ba.ToothEruptionAgeEstimate, VentralArc = ba.VentralArc, 
+                                    SubpubicAngle = ba.SubpubicAngle, SciaticNotch = ba.SciaticNotch, PubicBone = ba.PubicBone, 
+                                    PreauricularSulcus = ba.PreauricularSulcus, MedialIpRamus = ba.MedialIpRamus, 
+                                    DorsalPitting = ba.DorsalPitting, Femur = ba.Femur,
+                                    Humerus = ba.Humerus, FemurHeadDiameter = ba.FemurHeadDiameter, 
+                                    HumerusHeadDiameter = ba.HumerusHeadDiameter, FemurLength = ba.FemurLength,
+                                    HumerusLength = ba.HumerusLength, Tibia = ba.Tibia, EstimateStature = ba.EstimateStature, 
+                                    Osteophytosis = ba.Osteophytosis, CariesPeriodontalDisease = ba.CariesPeriodontalDisease, 
+                                    Notes = ba.Notes
+                                }).FirstOrDefault());
+            return ban;
+        }
+
+        public Burialmain GetBurialmainByBurialID(long burialID)
+        {
+            return context.Burialmain.Where(x => x.Id == burialID).FirstOrDefault();
+        }
+
+        public Textile GetTextileByBurialID(long burialID)
+        {
+            Textile textile = ((Textile)(from b in context.Burialmain join bmt in context.BurialmainTextile
+                                        on burialID equals bmt.MainBurialmainid join t in context.Textile on
+                                        bmt.MainTextileid equals t.Id select new Textile
+                                        {
+                                            Id = t.Id,
+                                            Locale = t.Locale,
+                                            Textileid = t.Textileid,
+                                            Description = t.Description,
+                                            Burialnumber = t.Burialnumber,
+                                            Estimatedperiod = t.Estimatedperiod,
+                                            Sampledate = t.Sampledate,
+                                            Photographeddate = t.Photographeddate,
+                                            Direction = t.Direction
+                                        }).FirstOrDefault());
+            return textile;
+        }
+        #endregion
+
         // ----------------------------------------- CREATE METHODS -------------------------------------------//
         #region
 
