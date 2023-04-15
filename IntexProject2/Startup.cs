@@ -83,7 +83,7 @@ namespace IntexProject2
 
             services.AddScoped<IBurialsRepository, BurialsRepository>();
             services.AddSingleton<InferenceSession>(
-            new InferenceSession("YESTHEmodel.onnx")
+            //new InferenceSession("YESTHEmodel.onnx")
 );
         }
 
